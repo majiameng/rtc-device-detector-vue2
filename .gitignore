@@ -1,0 +1,8 @@
+node_modules
+bin/*
+*.swp
+exports-github
+build
+out/
+.idea
+.DS_Store
