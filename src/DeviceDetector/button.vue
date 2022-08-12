@@ -14,8 +14,8 @@ export default {
       default: () => {},
     },
     className: String,
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -31,7 +31,9 @@ export default {
   box-sizing: border-box;
   font-weight: 500;
   line-height: 1.75;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 .outlined {
   padding: 5px 15px;

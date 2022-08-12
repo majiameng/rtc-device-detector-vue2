@@ -1,8 +1,8 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('trtc-js-sdk')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'trtc-js-sdk'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['rtc-device-detector'] = {}, global.TRTC));
-}(this, (function (exports, TRTC) { 'use strict';
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["rtc-device-detector"] = {}, global.TRTC));
+})(this, (function (exports, TRTC) { 'use strict';
 
 	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -25,7 +25,7 @@
 	//
 	//
 
-	var script$2 = {
+	var script$8 = {
 	  name: 'Button',
 	  props: {
 	    type: String,
@@ -34,7 +34,7 @@
 	      default: () => {},
 	    },
 	    className: String,
-	  }
+	  },
 	};
 
 	function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
@@ -113,9 +113,9 @@
 	}
 
 	/* script */
-	const __vue_script__$2 = script$2;
+	const __vue_script__$8 = script$8;
 	/* template */
-	var __vue_render__$2 = function() {
+	var __vue_render__$8 = function () {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -124,23 +124,23 @@
 	    {
 	      class: ["button", _vm.type, _vm.className],
 	      attrs: { type: "button" },
-	      on: { click: _vm.onClick }
+	      on: { click: _vm.onClick },
 	    },
 	    [_vm._t("default")],
 	    2
 	  )
 	};
-	var __vue_staticRenderFns__$2 = [];
-	__vue_render__$2._withStripped = true;
+	var __vue_staticRenderFns__$8 = [];
+	__vue_render__$8._withStripped = true;
 
 	  /* style */
-	  const __vue_inject_styles__$2 = undefined;
+	  const __vue_inject_styles__$8 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$2 = "data-v-03af32b5";
+	  const __vue_scope_id__$8 = "data-v-44646fc7";
 	  /* module identifier */
-	  const __vue_module_identifier__$2 = undefined;
+	  const __vue_module_identifier__$8 = undefined;
 	  /* functional template */
-	  const __vue_is_functional_template__$2 = false;
+	  const __vue_is_functional_template__$8 = false;
 	  /* style inject */
 	  
 	  /* style inject SSR */
@@ -149,13 +149,13 @@
 	  
 
 	  
-	  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
-	    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
-	    __vue_inject_styles__$2,
-	    __vue_script__$2,
-	    __vue_scope_id__$2,
-	    __vue_is_functional_template__$2,
-	    __vue_module_identifier__$2,
+	  const __vue_component__$8 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
+	    __vue_inject_styles__$8,
+	    __vue_script__$8,
+	    __vue_scope_id__$8,
+	    __vue_is_functional_template__$8,
+	    __vue_module_identifier__$8,
 	    false,
 	    undefined,
 	    undefined,
@@ -185,6 +185,15 @@
 	    }
 	  });
 	}
+	const NETWORK_QUALITY = {
+	  0: '未知',
+	  1: '极佳',
+	  2: '较好',
+	  3: '一般',
+	  4: '差',
+	  5: '极差',
+	  6: '断开'
+	};
 	const handleGetUserMediaError = error => {
 	  console.error('getUserMedia error', error);
 
@@ -231,10 +240,10 @@
 	  + '2. 请刷新网页后再次检测<br>'
 	  + '3. 请尝试更换网络后再次检测';
 
-	var script$1 = {
+	var script$7 = {
 	  name: 'deviceConnect',
 	  components: {
-	    Button: __vue_component__$2,
+	    Button: __vue_component__$8,
 	  },
 	  props: {
 	    stepNameList: {
@@ -250,10 +259,17 @@
 	      connectResult: {},
 	      showConnectResult: false,
 	      progressInterval: null,
-	      showRemind: false,
-	    }
+	      showRemind: true,
+	    };
 	  },
 	  computed: {
+	    prepareInfo() {
+	      return '设备检测前请确认设备连接了'
+	        + `${this.hasCameraDetect ? '摄像头' : ''}`
+	        + `${this.hasMicrophoneDetect ? '、麦克风' : ''}`
+	        + `${this.hasSpeakerDetect ? '、扬声器' : ''}`
+	        + `${this.hasNetworkDetect ? '和网络' : ''}`;
+	    },
 	    hasCameraDetect() {
 	      return this.stepNameList.indexOf('camera') >= 0;
 	    },
@@ -267,7 +283,7 @@
 	      return this.stepNameList.indexOf('network') >= 0;
 	    },
 	    showReconnectButton() {
-	      const deviceState = this.deviceState;
+	      const { deviceState } = this;
 	      return this.showConnectResult
 	        && !(deviceState.hasCameraConnect
 	        && deviceState.hasMicrophoneConnect
@@ -275,13 +291,13 @@
 	        && deviceState.hasNetworkConnect);
 	    },
 	    showStartDetectButton() {
-	      const deviceState = this.deviceState;
+	      const { deviceState } = this;
 	      return this.showConnectResult
 	        && (deviceState.hasCameraConnect
 	        && deviceState.hasMicrophoneConnect
 	        && deviceState.hasSpeakerConnect
 	        && deviceState.hasNetworkConnect);
-	    }
+	    },
 	  },
 	  watch: {
 	    showConnectResult: {
@@ -296,10 +312,13 @@
 	            }
 	          }, 200);
 	        }
-	      }
-	    }
+	      },
+	    },
 	  },
 	  methods: {
+	    setShowRemind(val) {
+	      this.showRemind = val;
+	    },
 	    handleReset() {
 	      this.progress = 0;
 	      this.connectResult = {};
@@ -310,9 +329,9 @@
 	      let micList = [];
 	      let speakerList = [];
 	      try {
-	        cameraList = await TRTC__default['default'].getCameras();
-	        micList = await TRTC__default['default'].getMicrophones();
-	        speakerList = await TRTC__default['default'].getSpeakers();
+	        cameraList = await TRTC__default["default"].getCameras();
+	        micList = await TRTC__default["default"].getMicrophones();
+	        speakerList = await TRTC__default["default"].getSpeakers();
 	      } catch (error) {
 	        console.log('rtc-device-detector getDeviceList error', error);
 	      }
@@ -419,13 +438,13 @@
 	  },
 	  mounted() {
 	    this.getDeviceConnectResult();
-	  }
+	  },
 	};
 
 	/* script */
-	const __vue_script__$1 = script$1;
+	const __vue_script__$7 = script$7;
 	/* template */
-	var __vue_render__$1 = function() {
+	var __vue_render__$7 = function () {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -433,24 +452,14 @@
 	    _c("div", { staticClass: "testing-title" }, [_vm._v("设备连接")]),
 	    _vm._v(" "),
 	    _c("div", { staticClass: "testing-prepare-info" }, [
-	      _vm._v(
-	        "\n    " +
-	          _vm._s(
-	            "设备检测前请确认设备连接了" +
-	              (_vm.hasCameraDetect ? "摄像头" : "") +
-	              (_vm.hasMicrophoneDetect ? "、麦克风" : "") +
-	              (_vm.hasSpeakerDetect ? "、扬声器" : "") +
-	              (this.hasNetworkDetect ? "和网络" : "")
-	          ) +
-	          "\n  "
-	      )
+	      _vm._v("\n    " + _vm._s(_vm.prepareInfo) + "\n  "),
 	    ]),
 	    _vm._v(" "),
 	    _c(
 	      "div",
 	      { staticClass: "device-display" },
 	      [
-	        _vm._l(_vm.stepNameList, function(stepName, index) {
+	        _vm._l(_vm.stepNameList, function (stepName, index) {
 	          return _c("div", { key: index }, [
 	            stepName === "camera"
 	              ? _c(
@@ -460,7 +469,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasCameraConnect
 	                        ? "connect-success"
-	                        : "connect-fail")
+	                        : "connect-fail"),
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -475,40 +484,34 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "958",
 	                            width: "24",
-	                            height: "24"
-	                          }
+	                            height: "24",
+	                          },
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
-	                              fill: "#47494D",
+	                              d: "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
 	                              opacity: ".8",
-	                              "p-id": "959"
-	                            }
+	                              "p-id": "959",
+	                            },
 	                          }),
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
-	                              fill: "#47494D",
+	                              d: "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
 	                              opacity: ".8",
-	                              "p-id": "960"
-	                            }
+	                              "p-id": "960",
+	                            },
 	                          }),
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
-	                              fill: "#47494D",
+	                              d: "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
 	                              opacity: ".8",
-	                              "p-id": "961"
-	                            }
-	                          })
+	                              "p-id": "961",
+	                            },
+	                          }),
 	                        ]
-	                      )
-	                    ])
+	                      ),
+	                    ]),
 	                  ]
 	                )
 	              : _vm._e(),
@@ -521,7 +524,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasMicrophoneConnect
 	                        ? "connect-success"
-	                        : "connect-fail")
+	                        : "connect-fail"),
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -536,22 +539,20 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "1205",
 	                            width: "24",
-	                            height: "24"
-	                          }
+	                            height: "24",
+	                          },
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
-	                              fill: "#47494D",
+	                              d: "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
 	                              opacity: ".8",
-	                              "p-id": "1206"
-	                            }
-	                          })
+	                              "p-id": "1206",
+	                            },
+	                          }),
 	                        ]
-	                      )
-	                    ])
+	                      ),
+	                    ]),
 	                  ]
 	                )
 	              : _vm._e(),
@@ -564,7 +565,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasSpeakerConnect
 	                        ? "connect-success"
-	                        : "connect-fail")
+	                        : "connect-fail"),
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -579,22 +580,20 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "2923",
 	                            width: "24",
-	                            height: "24"
-	                          }
+	                            height: "24",
+	                          },
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
-	                              fill: "#47494D",
+	                              d: "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
 	                              opacity: ".8",
-	                              "p-id": "2924"
-	                            }
-	                          })
+	                              "p-id": "2924",
+	                            },
+	                          }),
 	                        ]
-	                      )
-	                    ])
+	                      ),
+	                    ]),
 	                  ]
 	                )
 	              : _vm._e(),
@@ -607,7 +606,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasNetworkConnect
 	                        ? "connect-success"
-	                        : "connect-fail")
+	                        : "connect-fail"),
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -622,34 +621,30 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "1640",
 	                            width: "24",
-	                            height: "24"
-	                          }
+	                            height: "24",
+	                          },
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
-	                              fill: "#47494D",
+	                              d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
 	                              opacity: ".8",
-	                              "p-id": "1641"
-	                            }
+	                              "p-id": "1641",
+	                            },
 	                          }),
 	                          _c("path", {
 	                            attrs: {
-	                              d:
-	                                "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
-	                              fill: "#47494D",
+	                              d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
 	                              opacity: ".8",
-	                              "p-id": "1642"
-	                            }
-	                          })
+	                              "p-id": "1642",
+	                            },
+	                          }),
 	                        ]
-	                      )
-	                    ])
+	                      ),
+	                    ]),
 	                  ]
 	                )
-	              : _vm._e()
+	              : _vm._e(),
 	          ])
 	        }),
 	        _vm._v(" "),
@@ -658,18 +653,18 @@
 	              _c("div", {
 	                staticClass: "inner-progress",
 	                style: {
-	                  transform: "translateX(" + (_vm.progress - 100) + "%)"
-	                }
-	              })
+	                  transform: "translateX(" + (_vm.progress - 100) + "%)",
+	                },
+	              }),
 	            ])
-	          : _vm._e()
+	          : _vm._e(),
 	      ],
 	      2
 	    ),
 	    _vm._v(" "),
 	    !_vm.showConnectResult
 	      ? _c("div", { staticClass: "text gray-text" }, [
-	          _vm._v("设备正在连接中，请稍后")
+	          _vm._v("设备正在连接中，请稍后"),
 	        ])
 	      : _vm._e(),
 	    _vm._v(" "),
@@ -679,8 +674,8 @@
 	          {
 	            class: [
 	              "text",
-	              "" + (_vm.connectResult.success ? "green-text" : "red-text")
-	            ]
+	              "" + (_vm.connectResult.success ? "green-text" : "red-text"),
+	            ],
 	          },
 	          [
 	            _c("span", [_vm._v(_vm._s(_vm.connectResult.info))]),
@@ -691,39 +686,59 @@
 	                  {
 	                    staticClass: "error-connect",
 	                    on: {
-	                      touchstart: function() {
+	                      touchstart: function () {
 	                        return _vm.setShowRemind(true)
 	                      },
-	                      mouseenter: function() {
+	                      mouseenter: function () {
 	                        return _vm.setShowRemind(true)
 	                      },
-	                      touchend: function() {
+	                      touchend: function () {
 	                        return _vm.setShowRemind(false)
 	                      },
-	                      mouseleave: function() {
+	                      mouseleave: function () {
 	                        return _vm.setShowRemind(false)
-	                      }
-	                    }
+	                      },
+	                    },
 	                  },
 	                  [
 	                    _c("span", { staticClass: "error-icon" }, [
-	                      _vm._v("error")
+	                      _c(
+	                        "svg",
+	                        {
+	                          attrs: {
+	                            t: "1626151898274",
+	                            className: "icon",
+	                            viewBox: "0 0 1024 1024",
+	                            version: "1.1",
+	                            xmlns: "http://www.w3.org/2000/svg",
+	                            "p-id": "3223",
+	                            width: "28",
+	                            height: "28",
+	                          },
+	                        },
+	                        [
+	                          _c("path", {
+	                            attrs: {
+	                              d: "M1024 518.314667C1024 794.794667 794.737778 1024 505.685333 1024 229.205333 1024 0 794.737778 0 518.314667 0 229.262222 229.262222 0 505.685333 0 794.737778 0 1024 229.262222 1024 518.314667zM512 256a48.128 48.128 0 0 0-48.753778 51.370667L477.866667 614.4h68.266666l14.620445-307.029333A48.355556 48.355556 0 0 0 512 256z m0 512a51.2 51.2 0 1 0 0-102.4 51.2 51.2 0 0 0 0 102.4z",
+	                              fill: "#FF0000",
+	                              "p-id": "3224",
+	                            },
+	                          }),
+	                        ]
+	                      ),
 	                    ]),
 	                    _vm._v(" "),
 	                    _vm.showRemind
 	                      ? _c("div", {
 	                          staticClass: "connect-attention-info",
-	                          attrs: {
-	                            dangerouslySetInnerHTML: "{{",
-	                            "__html:": "",
-	                            "connectResult.remind": "",
-	                            "}}": ""
-	                          }
+	                          domProps: {
+	                            innerHTML: _vm._s(_vm.connectResult.remind),
+	                          },
 	                        })
-	                      : _vm._e()
+	                      : _vm._e(),
 	                  ]
 	                )
-	              : _vm._e()
+	              : _vm._e(),
 	          ]
 	        )
 	      : _vm._e(),
@@ -750,10 +765,1432 @@
 	              { attrs: { type: "contained", onClick: _vm.startDeviceDetect } },
 	              [_vm._v("开始检测")]
 	            )
-	          : _vm._e()
+	          : _vm._e(),
 	      ],
 	      1
-	    )
+	    ),
+	  ])
+	};
+	var __vue_staticRenderFns__$7 = [];
+	__vue_render__$7._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$7 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$7 = "data-v-2ebd7e36";
+	  /* module identifier */
+	  const __vue_module_identifier__$7 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$7 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+	  /* style inject shadow dom */
+	  
+
+	  
+	  const __vue_component__$7 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
+	    __vue_inject_styles__$7,
+	    __vue_script__$7,
+	    __vue_scope_id__$7,
+	    __vue_is_functional_template__$7,
+	    __vue_module_identifier__$7,
+	    false,
+	    undefined,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	const getDeviceList = async (deviceType) => {
+	  let deviceList = [];
+	  switch (deviceType) {
+	    case 'camera':
+	      deviceList = await TRTC__default["default"].getCameras();
+	      break;
+	    case 'microphone':
+	      deviceList = await TRTC__default["default"].getMicrophones();
+	      break;
+	    case 'speaker':
+	      deviceList = await TRTC__default["default"].getSpeakers();
+	      break;
+	  }
+	  return deviceList;
+	};
+	var script$6 = {
+	  name: 'DeviceSelect',
+	  props: {
+	    deviceType: String,
+	    onChange: Function,
+	    choseDevice: Object,
+	  },
+	  data() {
+	    return {
+	      deviceList: [],
+	      activeDevice: {},
+	      activeDeviceId: '',
+	    };
+	  },
+	  watch: {
+	    activeDevice: {
+	      deep: true,
+	      handler(val) {
+	        if (val && JSON.stringify(val) !== '{}') {
+	          this.onChange && this.onChange(val);
+	        }
+	      },
+	    },
+	  },
+	  methods: {
+	    async getDeviceListData() {
+	      const list = await getDeviceList(this.deviceType);
+	      const deviceIdList = list.map(item => item.deviceId);
+	      this.deviceList = list;
+	      if (this.choseDevice && deviceIdList.indexOf(this.choseDevice.deviceId) >= 0) {
+	        [this.activeDevice] = list.filter(item => item.deviceId === this.choseDevice.deviceId);
+	        this.activeDeviceId = this.choseDevice.deviceId;
+	      } else {
+	        [this.activeDevice] = list;
+	        this.activeDeviceId = list[0].deviceId;
+	      }
+	    },
+	    handleChange(event) {
+	      const deviceID = event.target.value;
+	      const activeDevice = this.deviceList.find(item => item.deviceId === deviceID);
+	      this.activeDevice = activeDevice;
+	      this.activeDeviceId = deviceID;
+	    },
+	  },
+	  mounted() {
+	    navigator.mediaDevices.addEventListener('devicechange', async () => {
+	      const newList = await getDeviceList(this.deviceType);
+	      this.deviceList = newList;
+	    });
+	    this.getDeviceListData();
+	  },
+	};
+
+	/* script */
+	const __vue_script__$6 = script$6;
+	/* template */
+	var __vue_render__$6 = function () {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c("div", [
+	    _c(
+	      "select",
+	      {
+	        staticClass: "device-select",
+	        domProps: { value: _vm.activeDeviceId },
+	        on: { change: _vm.handleChange },
+	      },
+	      _vm._l(_vm.deviceList, function (item, index) {
+	        return _c(
+	          "option",
+	          { key: index, domProps: { value: item.deviceId } },
+	          [_vm._v(_vm._s(item.label))]
+	        )
+	      }),
+	      0
+	    ),
+	  ])
+	};
+	var __vue_staticRenderFns__$6 = [];
+	__vue_render__$6._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$6 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$6 = "data-v-053a474c";
+	  /* module identifier */
+	  const __vue_module_identifier__$6 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$6 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+	  /* style inject shadow dom */
+	  
+
+	  
+	  const __vue_component__$6 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
+	    __vue_inject_styles__$6,
+	    __vue_script__$6,
+	    __vue_scope_id__$6,
+	    __vue_is_functional_template__$6,
+	    __vue_module_identifier__$6,
+	    false,
+	    undefined,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	var script$5 = {
+	  name: 'cameraDetector',
+	  props: {
+	    activeDetector: String,
+	    handleCompleted: Function,
+	  },
+	  components: {
+	    Button: __vue_component__$8,
+	    DeviceSelect: __vue_component__$6,
+	  },
+	  data() {
+	    return {
+	      currentDetector: 'camera',
+	      localStream: null,
+	      cameraLabel: '',
+	      cameraID: '',
+	      choseDevice: null,
+	    };
+	  },
+	  watch: {
+	    activeDetector(val, oldVal) {
+	      if (val === this.currentDetector && !this.localStream && this.cameraID) {
+	        this.initStream(this.cameraID);
+	      }
+	      if (oldVal === this.currentDetector) {
+	        this.localStream && this.localStream.close();
+	        this.localStream = null;
+	      }
+	    },
+	  },
+	  methods: {
+	    async initStream(cameraID) {
+	      this.localStream = TRTC__default["default"].createStream({
+	        video: true,
+	        audio: false,
+	        cameraId: cameraID,
+	      });
+	      await this.localStream.initialize();
+	      this.localStream.play('camera-video');
+	    },
+
+
+	    async handleCameraChange(cameraDevice) {
+	      console.log('lixin-debug camera', cameraDevice);
+	      this.choseDevice = cameraDevice;
+	      const { deviceId, label } = cameraDevice;
+	      if (this.localStream) {
+	        this.localStream.switchDevice('video', deviceId);
+	      } else {
+	        this.initStream(deviceId);
+	      }
+	      this.cameraID = deviceId;
+	      this.cameraLabel = label;
+	    },
+
+	    handleError() {
+	      this.handleCompleted('error', this.cameraLabel);
+	    },
+
+	    handleSuccess() {
+	      this.handleCompleted('success', this.cameraLabel);
+	    },
+	  },
+	};
+
+	/* script */
+	const __vue_script__$5 = script$5;
+	/* template */
+	var __vue_render__$5 = function () {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _vm.activeDetector === _vm.currentDetector
+	    ? _c("div", { staticClass: "testing-body" }, [
+	        _c(
+	          "div",
+	          { staticClass: "device-list" },
+	          [
+	            _c("span", { staticClass: "device-list-title" }, [
+	              _vm._v("摄像头选择"),
+	            ]),
+	            _vm._v(" "),
+	            _c("DeviceSelect", {
+	              attrs: {
+	                deviceType: "camera",
+	                choseDevice: _vm.choseDevice,
+	                onChange: _vm.handleCameraChange,
+	              },
+	            }),
+	          ],
+	          1
+	        ),
+	        _vm._v(" "),
+	        _c("div", {
+	          staticClass: "camera-video",
+	          attrs: { id: "camera-video" },
+	        }),
+	        _vm._v(" "),
+	        _c("div", { staticClass: "testing-info-container" }, [
+	          _c("div", { staticClass: "testing-info" }, [
+	            _vm._v("是否可以清楚的看到自己？"),
+	          ]),
+	          _vm._v(" "),
+	          _c(
+	            "div",
+	            { staticClass: "button-list" },
+	            [
+	              _c(
+	                "Button",
+	                { attrs: { type: "outlined", onClick: _vm.handleError } },
+	                [_vm._v("看不到")]
+	              ),
+	              _vm._v(" "),
+	              _c(
+	                "Button",
+	                { attrs: { type: "contained", onClick: _vm.handleSuccess } },
+	                [_vm._v("看的到")]
+	              ),
+	            ],
+	            1
+	          ),
+	        ]),
+	      ])
+	    : _vm._e()
+	};
+	var __vue_staticRenderFns__$5 = [];
+	__vue_render__$5._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$5 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$5 = "data-v-7fd73d37";
+	  /* module identifier */
+	  const __vue_module_identifier__$5 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$5 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+	  /* style inject shadow dom */
+	  
+
+	  
+	  const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+	    __vue_inject_styles__$5,
+	    __vue_script__$5,
+	    __vue_scope_id__$5,
+	    __vue_is_functional_template__$5,
+	    __vue_module_identifier__$5,
+	    false,
+	    undefined,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	var script$4 = {
+	  name: 'micDetector',
+	  props: {
+	    activeDetector: String,
+	    handleCompleted: Function,
+	  },
+	  components: {
+	    Button: __vue_component__$8,
+	    DeviceSelect: __vue_component__$6,
+	  },
+	  data() {
+	    return {
+	      currentDetector: 'microphone',
+	      localStream: null,
+	      microphoneID: '',
+	      microphoneLabel: '',
+	      volumeNum: 0,
+	      choseDevice: null,
+	      timer: null,
+	    };
+	  },
+	  watch: {
+	    activeDetector(val, oldVal) {
+	      if (val === this.currentDetector && !this.localStream && this.microphoneID) {
+	        this.initStream(this.microphoneID);
+	      }
+	      if (oldVal === this.currentDetector) {
+	        this.localStream && this.localStream.close();
+	        this.localStream = null;
+	        clearInterval(this.timer);
+	        this.volumeNum = 0;
+	      }
+	    },
+	  },
+	  methods: {
+	    async initStream(microphoneID) {
+	      console.log('microphoneID', microphoneID);
+	      this.localStream = TRTC__default["default"].createStream({
+	        video: false,
+	        audio: true,
+	        microphoneId: microphoneID,
+	      });
+	      await this.localStream.initialize();
+	      this.localStream.play('audio-container');
+	      this.timer = setInterval(() => {
+	        const volume = this.localStream.getAudioLevel();
+	        this.volumeNum = Math.ceil(28 * volume);
+	      }, 100);
+	    },
+
+	    async handleMicrophoneChange(microphoneDevice) {
+	      this.choseDevice = microphoneDevice;
+	      const { deviceId, label } = microphoneDevice;
+	      if (this.localStream) {
+	        this.localStream.switchDevice('audio', deviceId);
+	      } else {
+	        this.initStream(deviceId);
+	      }
+	      this.microphoneID = deviceId;
+	      this.microphoneLabel = label;
+	    },
+	  },
+	};
+
+	/* script */
+	const __vue_script__$4 = script$4;
+	/* template */
+	var __vue_render__$4 = function () {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _vm.activeDetector === _vm.currentDetector
+	    ? _c("div", { staticClass: "testing-body" }, [
+	        _c(
+	          "div",
+	          { staticClass: "device-list" },
+	          [
+	            _c("span", { staticClass: "device-list-title" }, [
+	              _vm._v("麦克风选择"),
+	            ]),
+	            _vm._v(" "),
+	            _c("DeviceSelect", {
+	              attrs: {
+	                deviceType: "microphone",
+	                choseDevice: _vm.choseDevice,
+	                onChange: _vm.handleMicrophoneChange,
+	              },
+	            }),
+	          ],
+	          1
+	        ),
+	        _vm._v(" "),
+	        _c("div", { staticClass: "mic-testing-container" }, [
+	          _c("div", { staticClass: "mic-testing-info" }, [
+	            _vm._v('对着麦克风说"哈喽"试试～'),
+	          ]),
+	          _vm._v(" "),
+	          _c(
+	            "div",
+	            { staticClass: "mic-bar-container" },
+	            _vm._l(new Array(28).fill(""), function (item, index) {
+	              return _c("div", {
+	                key: index,
+	                class: ["mic-bar " + (_vm.volumeNum > index && "active")],
+	              })
+	            }),
+	            0
+	          ),
+	          _vm._v(" "),
+	          _c("div", { attrs: { id: "audio-container" } }),
+	        ]),
+	        _vm._v(" "),
+	        _c("div", { staticClass: "testing-info-container" }, [
+	          _c("div", { staticClass: "testing-info" }, [
+	            _vm._v("是否可以看到音量图标跳动？"),
+	          ]),
+	          _vm._v(" "),
+	          _c(
+	            "div",
+	            { staticClass: "button-list" },
+	            [
+	              _c(
+	                "Button",
+	                {
+	                  attrs: {
+	                    type: "outlined",
+	                    onClick: function () {
+	                      return _vm.handleCompleted("error", _vm.microphoneLabel)
+	                    },
+	                  },
+	                },
+	                [_vm._v("看不到")]
+	              ),
+	              _vm._v(" "),
+	              _c(
+	                "Button",
+	                {
+	                  attrs: {
+	                    type: "contained",
+	                    onClick: function () {
+	                      return _vm.handleCompleted("success", _vm.microphoneLabel)
+	                    },
+	                  },
+	                },
+	                [_vm._v("看的到")]
+	              ),
+	            ],
+	            1
+	          ),
+	        ]),
+	      ])
+	    : _vm._e()
+	};
+	var __vue_staticRenderFns__$4 = [];
+	__vue_render__$4._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$4 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$4 = "data-v-fdd569e8";
+	  /* module identifier */
+	  const __vue_module_identifier__$4 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$4 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+	  /* style inject shadow dom */
+	  
+
+	  
+	  const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+	    __vue_inject_styles__$4,
+	    __vue_script__$4,
+	    __vue_scope_id__$4,
+	    __vue_is_functional_template__$4,
+	    __vue_module_identifier__$4,
+	    false,
+	    undefined,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	var script$3 = {
+	  name: 'speakerDetector',
+	  props: {
+	    audioUrl: {
+	      type: String,
+	      default: 'https://1256993030.vod2.myqcloud.com/d520582dvodtransgzp1256993030/45f1edea3701925920950247965/v.f1010.mp3',
+	    },
+	    activeDetector: String,
+	    handleCompleted: Function,
+	  },
+	  components: {
+	    DeviceSelect: __vue_component__$6,
+	    Button: __vue_component__$8,
+	  },
+	  data() {
+	    return {
+	      audioPlayer: null,
+	      currentDetector: 'speaker',
+	      speakerLabel: '',
+	      url: '',
+	      choseDevice: null,
+	    };
+	  },
+	  watch: {
+	    activeDetector(val, oldVal) {
+	      if (val === this.currentDetector) {
+	        this.audioPlayer = document.getElementById('audio-player');
+	      }
+	      if (oldVal === this.currentDetector) {
+	        if (this.audioPlayer && !this.audioPlayer.paused) {
+	          this.audioPlayer.pause();
+	        }
+	        if (this.audioPlayer) {
+	          this.audioPlayer.currentTime = 0;
+	        }
+	      }
+	    },
+	  },
+	  methods: {
+	    async handleSpeakerChange(speakerDevice) {
+	      this.choseDevice = speakerDevice;
+	      const { deviceId, label } = speakerDevice;
+	      this.audioPlayer && (await this.audioPlayer.setSinkId(deviceId));
+	      this.speakerLabel = label;
+	    },
+	  },
+	};
+
+	/* script */
+	const __vue_script__$3 = script$3;
+	/* template */
+	var __vue_render__$3 = function () {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _vm.activeDetector === _vm.currentDetector
+	    ? _c("div", { staticClass: "testing-body" }, [
+	        _c(
+	          "div",
+	          { staticClass: "device-list" },
+	          [
+	            _c("span", { staticClass: "device-list-title" }, [
+	              _vm._v("扬声器选择"),
+	            ]),
+	            _vm._v(" "),
+	            _c("DeviceSelect", {
+	              attrs: {
+	                deviceType: "speaker",
+	                choseDevice: _vm.choseDevice,
+	                onChange: _vm.handleSpeakerChange,
+	              },
+	            }),
+	          ],
+	          1
+	        ),
+	        _vm._v(" "),
+	        _c("div", { staticClass: "audio-player-container" }, [
+	          _c("div", { staticClass: "audio-player-info" }, [
+	            _vm._v("请调高设备音量，点击播放下面的音频试试～"),
+	          ]),
+	          _vm._v(" "),
+	          _c("audio", {
+	            attrs: { id: "audio-player", src: _vm.audioUrl, controls: "" },
+	          }),
+	        ]),
+	        _vm._v(" "),
+	        _c("div", { staticClass: "testing-info-container" }, [
+	          _c("div", { staticClass: "testing-info" }, [
+	            _vm._v("是否可以听到声音？"),
+	          ]),
+	          _vm._v(" "),
+	          _c(
+	            "div",
+	            { staticClass: "button-list" },
+	            [
+	              _c(
+	                "Button",
+	                {
+	                  attrs: {
+	                    type: "outlined",
+	                    onClick: function () {
+	                      return _vm.handleCompleted("error", _vm.speakerLabel)
+	                    },
+	                  },
+	                },
+	                [_vm._v("听不到")]
+	              ),
+	              _vm._v(" "),
+	              _c(
+	                "Button",
+	                {
+	                  attrs: {
+	                    type: "contained",
+	                    onClick: function () {
+	                      return _vm.handleCompleted("success", _vm.speakerLabel)
+	                    },
+	                  },
+	                },
+	                [_vm._v("听的到")]
+	              ),
+	            ],
+	            1
+	          ),
+	        ]),
+	      ])
+	    : _vm._e()
+	};
+	var __vue_staticRenderFns__$3 = [];
+	__vue_render__$3._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$3 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$3 = "data-v-ea1e493c";
+	  /* module identifier */
+	  const __vue_module_identifier__$3 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$3 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+	  /* style inject shadow dom */
+	  
+
+	  
+	  const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
+	    __vue_inject_styles__$3,
+	    __vue_script__$3,
+	    __vue_scope_id__$3,
+	    __vue_is_functional_template__$3,
+	    __vue_module_identifier__$3,
+	    false,
+	    undefined,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	var script$2 = {
+	  name: 'networkDetector',
+	  components: {
+	    Button: __vue_component__$8,
+	  },
+	  props: {
+	    activeDetector: String,
+	    networkDetectInfo: Object,
+	    handleCompleted: Function,
+	    generateReport: Function,
+	  },
+	  data() {
+	    return {
+	      NETWORK_QUALITY,
+	      currentDetector: 'network',
+	      detectorInfo: {},
+	      count: 15,
+	      timer: null,
+	      uplinkClient: null,
+	      uplinkStream: null,
+	      downlinkClient: null,
+	      networkTestingResult: {
+	        uplinkNetworkQualities: [],
+	        downlinkNetworkQualities: [],
+	        rttList: [],
+	      },
+	    };
+	  },
+	  computed: {
+	  },
+	  watch: {
+	    activeDetector(val, oldVal) {
+	      if (val === this.currentDetector && this.count !== 0) {
+	        this.count = 15;
+	        this.getDetectorInfo();
+	      }
+	      if (oldVal === this.currentDetector) {
+	        clearInterval(this.timer);
+	        this.uplinkStream && this.uplinkStream.close();
+	        this.uplinkClient && this.uplinkClient.leave();
+	        this.downlinkClient && this.downlinkClient.leave();
+	      }
+	    },
+	    count(val) {
+	      if (val === 0) {
+	        this.getAverageInfo(this.detectorInfo);
+	        this.uplinkStream && this.uplinkStream.close();
+	        this.uplinkClient && this.uplinkClient.leave();
+	        this.downlinkClient && this.downlinkClient.leave();
+	      }
+	    },
+	  },
+	  methods: {
+	    // 获取上行网络质量和RTT
+	    async testUplinkNetworkQuality() {
+	      const { sdkAppId, roomId } = this.networkDetectInfo;
+	      const { uplinkUserId, uplinkUserSig } = this.networkDetectInfo.uplinkUserInfo;
+	      this.uplinkClient = TRTC__default["default"].createClient({
+	        sdkAppId,
+	        userId: uplinkUserId,
+	        userSig: uplinkUserSig,
+	        mode: 'rtc',
+	        useStringRoomId: typeof(roomId) === 'string',
+	      });
+
+	      this.uplinkStream = TRTC__default["default"].createStream({ audio: true, video: true });
+	      await this.uplinkStream.initialize();
+
+	      this.uplinkClient.on('network-quality', async (event) => {
+	        const { uplinkNetworkQuality } = event;
+	        this.networkTestingResult.uplinkNetworkQualities.push(uplinkNetworkQuality);
+	        this.detectorInfo.uplinkQuality = uplinkNetworkQuality;
+	        const { rtt } = await this.uplinkClient.getTransportStats();
+	        this.detectorInfo.rtt = rtt;
+	        this.networkTestingResult.rttList.push(rtt);
+	      });
+
+	      await this.uplinkClient.join({ roomId }); // 加入用于测试的房间
+	      await this.uplinkClient.publish(this.uplinkStream);
+	    },
+	    // 获取下行网络质量
+	    async testDownlinkNetworkQuality() {
+	      const { sdkAppId, roomId } = this.networkDetectInfo;
+	      const { downlinkUserId, downlinkUserSig } = this.networkDetectInfo.downlinkUserInfo;
+	      this.downlinkClient = TRTC__default["default"].createClient({
+	        sdkAppId,
+	        userId: downlinkUserId,
+	        userSig: downlinkUserSig,
+	        mode: 'rtc',
+	        useStringRoomId: typeof(roomId) === 'string',
+	      });
+
+	      this.downlinkClient.on('stream-added', async (event) => {
+	        await this.downlinkClient.subscribe(event.stream, { audio: true, video: true });
+	        this.downlinkClient.on('network-quality', (event) => {
+	          const { downlinkNetworkQuality } = event;
+	          this.networkTestingResult.downlinkNetworkQualities.push(downlinkNetworkQuality);
+	          this.detectorInfo.downlinkQuality = downlinkNetworkQuality;
+	        });
+	      });
+
+	      await this.downlinkClient.join({ roomId }); // 加入用于测试的房间
+	    },
+	    // 获取15秒检测平均值
+	    getAverageInfo(detectorInfo) {
+	      const uplinkAverageQuality = Math.ceil(this.networkTestingResult.uplinkNetworkQualities
+	        .reduce((value, current) => value + current, 0) / this.networkTestingResult.uplinkNetworkQualities.length);
+	      const downlinkAverageQuality = Math.ceil(this.networkTestingResult.downlinkNetworkQualities
+	        .reduce((value, current) => value + current, 0) / this.networkTestingResult.downlinkNetworkQualities.length);
+	      const rttAverageQuality = Math.ceil(this.networkTestingResult.rttList
+	        .reduce((value, current) => value + current, 0) / this.networkTestingResult.rttList.length);
+	      const detectorResultInfo = {
+	        ...detectorInfo,
+	        uplinkQuality: uplinkAverageQuality,
+	        downlinkQuality: downlinkAverageQuality,
+	        rtt: rttAverageQuality,
+	      };
+	      this.handleCompleted('success', detectorResultInfo);
+	      this.detectorInfo = detectorResultInfo;
+	    },
+	    async getDetectorInfo() {
+	      const detect = new RTCDetect();
+	      const systemResult = detect.getSystem();
+	      const webRTCSupportResult = await detect.isTRTCSupported();
+	      const APISupportResult = detect.getAPISupported();
+
+	      this.detectorInfo = {
+	        system: systemResult.OS,
+	        browser: `${systemResult.browser.name} ${systemResult.browser.version}`,
+	        TRTCSupport: webRTCSupportResult.result ? '支持' : '不支持',
+	        screenMediaSupport: APISupportResult.isScreenCaptureAPISupported ? '支持' : '不支持',
+	      };
+
+	      this.timer = setInterval(() => {
+	        this.count = this.count - 1;
+	        if (this.count === 0) {
+	          clearInterval(this.timer);
+	        }
+	      }, 1000);
+
+	      this.testUplinkNetworkQuality();
+	      this.testDownlinkNetworkQuality();
+	    },
+	  },
+	};
+
+	/* script */
+	const __vue_script__$2 = script$2;
+	/* template */
+	var __vue_render__$2 = function () {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _vm.activeDetector === _vm.currentDetector
+	    ? _c(
+	        "div",
+	        { staticClass: "testing-body" },
+	        [
+	          _c("div", { staticClass: "testing-list" }, [
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("操作系统")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                { class: !_vm.detectorInfo.system ? "network-loading" : "" },
+	                [
+	                  _vm._v(
+	                    "\n        " + _vm._s(_vm.detectorInfo.system) + "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("浏览器")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                { class: !_vm.detectorInfo.browser ? "network-loading" : "" },
+	                [
+	                  _vm._v(
+	                    "\n        " + _vm._s(_vm.detectorInfo.browser) + "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("是否支持TRTC")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                {
+	                  class: !_vm.detectorInfo.TRTCSupport ? "network-loading" : "",
+	                },
+	                [
+	                  _vm._v(
+	                    "\n        " +
+	                      _vm._s(_vm.detectorInfo.TRTCSupport) +
+	                      "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("是否支持屏幕分享")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                {
+	                  class: !_vm.detectorInfo.screenMediaSupport
+	                    ? "network-loading"
+	                    : "",
+	                },
+	                [
+	                  _vm._v(
+	                    "\n        " +
+	                      _vm._s(_vm.detectorInfo.screenMediaSupport) +
+	                      "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("网络延时")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                { class: !_vm.detectorInfo.rtt ? "network-loading" : "" },
+	                [
+	                  _vm._v(
+	                    "\n        " +
+	                      _vm._s(
+	                        _vm.detectorInfo.rtt ? _vm.detectorInfo.rtt + "ms" : ""
+	                      ) +
+	                      "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("上行网络质量")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                {
+	                  class: !_vm.NETWORK_QUALITY[_vm.detectorInfo.uplinkQuality]
+	                    ? "network-loading"
+	                    : "",
+	                },
+	                [
+	                  _vm._v(
+	                    "\n        " +
+	                      _vm._s(
+	                        _vm.NETWORK_QUALITY[_vm.detectorInfo.uplinkQuality] ||
+	                          ""
+	                      ) +
+	                      "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "testing-item-container" }, [
+	              _c("div", [_vm._v("下行网络质量")]),
+	              _vm._v(" "),
+	              _c(
+	                "div",
+	                {
+	                  class: !_vm.NETWORK_QUALITY[_vm.detectorInfo.downlinkQuality]
+	                    ? "network-loading"
+	                    : "",
+	                },
+	                [
+	                  _vm._v(
+	                    "\n        " +
+	                      _vm._s(
+	                        _vm.NETWORK_QUALITY[_vm.detectorInfo.downlinkQuality] ||
+	                          ""
+	                      ) +
+	                      "\n      "
+	                  ),
+	                ]
+	              ),
+	            ]),
+	          ]),
+	          _vm._v(" "),
+	          _vm.count > 0
+	            ? _c(
+	                "Button",
+	                { staticClass: "gray-button", attrs: { type: "disabled" } },
+	                [_vm._v(_vm._s("剩余检测时间（" + _vm.count + "）s"))]
+	              )
+	            : _c(
+	                "Button",
+	                {
+	                  staticClass: "report-button",
+	                  attrs: { type: "contained", onClick: _vm.generateReport },
+	                },
+	                [_vm._v("查看检测报告")]
+	              ),
+	        ],
+	        1
+	      )
+	    : _vm._e()
+	};
+	var __vue_staticRenderFns__$2 = [];
+	__vue_render__$2._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$2 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$2 = "data-v-3619c57e";
+	  /* module identifier */
+	  const __vue_module_identifier__$2 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$2 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+	  /* style inject shadow dom */
+	  
+
+	  
+	  const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
+	    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+	    __vue_inject_styles__$2,
+	    __vue_script__$2,
+	    __vue_scope_id__$2,
+	    __vue_is_functional_template__$2,
+	    __vue_module_identifier__$2,
+	    false,
+	    undefined,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	var script$1 = {
+	  name: 'detectorReport',
+	  props: {
+	    reportData: Object,
+	    handleReset: Function,
+	    handleClose: Function,
+	  },
+	  components: {
+	    Button: __vue_component__$8,
+	  },
+	  data() {
+	    return {
+	      NETWORK_QUALITY,
+	    };
+	  },
+	  computed: {
+	    goodUplinkQuality() {
+	      return this.reportData.network.result.uplinkQuality > 0 && this.reportData.network.result.uplinkQuality < 4;
+	    },
+	    goodDownlinkQuality() {
+	      return this.reportData.network.result.downlinkQuality > 0 && this.reportData.network.result.downlinkQuality < 4;
+	    },
+	  },
+	  methods: {
+
+	  },
+	};
+
+	/* script */
+	const __vue_script__$1 = script$1;
+	/* template */
+	var __vue_render__$1 = function () {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c("div", { staticClass: "device-testing-report" }, [
+	    _c("div", { staticClass: "testing-title" }, [_vm._v("检测报告")]),
+	    _vm._v(" "),
+	    _c("div", { staticClass: "device-report-list" }, [
+	      _c("div", { staticClass: "device-report" }, [
+	        _c("div", { staticClass: "device-info" }, [
+	          _c("span", { staticClass: "report-icon" }, [
+	            _c(
+	              "svg",
+	              {
+	                staticClass: "icon",
+	                attrs: {
+	                  t: "1630397874793",
+	                  viewBox: "0 0 1024 1024",
+	                  version: "1.1",
+	                  xmlns: "http://www.w3.org/2000/svg",
+	                  "p-id": "958",
+	                  width: "24",
+	                  height: "24",
+	                },
+	              },
+	              [
+	                _c("path", {
+	                  attrs: {
+	                    d: "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
+	                    fill: "#47494D",
+	                    opacity: ".8",
+	                    "p-id": "959",
+	                  },
+	                }),
+	                _c("path", {
+	                  attrs: {
+	                    d: "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
+	                    fill: "#47494D",
+	                    opacity: ".8",
+	                    "p-id": "960",
+	                  },
+	                }),
+	                _c("path", {
+	                  attrs: {
+	                    d: "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
+	                    fill: "#47494D",
+	                    opacity: ".8",
+	                    "p-id": "961",
+	                  },
+	                }),
+	              ]
+	            ),
+	          ]),
+	          _vm._v(" "),
+	          _c("div", { staticClass: "device-name" }, [
+	            _vm._v(_vm._s(_vm.reportData.camera.result)),
+	          ]),
+	        ]),
+	        _vm._v(" "),
+	        _c(
+	          "div",
+	          {
+	            class: [_vm.reportData.camera.type === "success" ? "green" : "red"],
+	          },
+	          [
+	            _vm._v(
+	              "\n          " +
+	                _vm._s(
+	                  _vm.reportData.camera.type === "success" ? "正常" : "异常"
+	                ) +
+	                "\n        "
+	            ),
+	          ]
+	        ),
+	      ]),
+	      _vm._v(" "),
+	      _c("div", { staticClass: "device-report" }, [
+	        _c("div", { staticClass: "device-info" }, [
+	          _c("span", { staticClass: "report-icon" }, [
+	            _c(
+	              "svg",
+	              {
+	                staticClass: "icon",
+	                attrs: {
+	                  t: "1630397938861",
+	                  viewBox: "0 0 1024 1024",
+	                  version: "1.1",
+	                  xmlns: "http://www.w3.org/2000/svg",
+	                  "p-id": "1205",
+	                  width: "24",
+	                  height: "24",
+	                },
+	              },
+	              [
+	                _c("path", {
+	                  attrs: {
+	                    d: "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
+	                    fill: "#47494D",
+	                    opacity: ".8",
+	                    "p-id": "1206",
+	                  },
+	                }),
+	              ]
+	            ),
+	          ]),
+	          _vm._v(" "),
+	          _c("div", { staticClass: "device-name" }, [
+	            _vm._v(_vm._s(_vm.reportData.microphone.result)),
+	          ]),
+	        ]),
+	        _vm._v(" "),
+	        _c(
+	          "div",
+	          {
+	            class: [
+	              _vm.reportData.microphone.type === "success" ? "green" : "red",
+	            ],
+	          },
+	          [
+	            _vm._v(
+	              "\n          " +
+	                _vm._s(
+	                  _vm.reportData.microphone.type === "success" ? "正常" : "异常"
+	                ) +
+	                "\n        "
+	            ),
+	          ]
+	        ),
+	      ]),
+	      _vm._v(" "),
+	      _vm.reportData.speaker
+	        ? _c("div", { staticClass: "device-report" }, [
+	            _c("div", { staticClass: "device-info" }, [
+	              _c("span", { staticClass: "report-icon" }, [
+	                _c(
+	                  "svg",
+	                  {
+	                    staticClass: "icon",
+	                    attrs: {
+	                      t: "1629186923749",
+	                      viewBox: "0 0 1024 1024",
+	                      version: "1.1",
+	                      xmlns: "http://www.w3.org/2000/svg",
+	                      "p-id": "2923",
+	                      width: "24",
+	                      height: "24",
+	                    },
+	                  },
+	                  [
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "2924",
+	                      },
+	                    }),
+	                  ]
+	                ),
+	              ]),
+	              _vm._v(" "),
+	              _c("div", { staticClass: "device-name" }, [
+	                _vm._v(_vm._s(_vm.reportData.speaker.result)),
+	              ]),
+	            ]),
+	            _vm._v(" "),
+	            _c(
+	              "div",
+	              {
+	                class: [
+	                  _vm.reportData.speaker.type === "success" ? "green" : "red",
+	                ],
+	              },
+	              [
+	                _vm._v(
+	                  "\n          " +
+	                    _vm._s(
+	                      _vm.reportData.speaker.type === "success"
+	                        ? "正常"
+	                        : "异常"
+	                    ) +
+	                    "\n        "
+	                ),
+	              ]
+	            ),
+	          ])
+	        : _vm._e(),
+	      _vm._v(" "),
+	      _vm.reportData.network
+	        ? _c("div", { staticClass: "device-report" }, [
+	            _c("div", { staticClass: "device-info" }, [
+	              _c("span", { staticClass: "report-icon" }, [
+	                _c(
+	                  "svg",
+	                  {
+	                    staticClass: "icon",
+	                    attrs: {
+	                      t: "1630400570252",
+	                      viewBox: "0 0 1291 1024",
+	                      version: "1.1",
+	                      xmlns: "http://www.w3.org/2000/svg",
+	                      "p-id": "1640",
+	                      width: "24",
+	                      height: "24",
+	                    },
+	                  },
+	                  [
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "1641",
+	                      },
+	                    }),
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "1642",
+	                      },
+	                    }),
+	                  ]
+	                ),
+	              ]),
+	              _vm._v(" "),
+	              _c("div", { staticClass: "device-name" }, [_vm._v("网络延时")]),
+	            ]),
+	            _vm._v(" "),
+	            _c(
+	              "div",
+	              {
+	                class: [
+	                  _vm.reportData.network.result.rtt <= 200 ? "green" : "red",
+	                ],
+	              },
+	              [
+	                _vm._v(
+	                  "\n          " +
+	                    _vm._s(_vm.reportData.network.result.rtt + "ms") +
+	                    "\n        "
+	                ),
+	              ]
+	            ),
+	          ])
+	        : _vm._e(),
+	      _vm._v(" "),
+	      _vm.reportData.network
+	        ? _c("div", { staticClass: "device-report" }, [
+	            _c("div", { staticClass: "device-info" }, [
+	              _c("span", { staticClass: "report-icon" }, [
+	                _c(
+	                  "svg",
+	                  {
+	                    staticClass: "icon",
+	                    attrs: {
+	                      t: "1630400570252",
+	                      viewBox: "0 0 1291 1024",
+	                      version: "1.1",
+	                      xmlns: "http://www.w3.org/2000/svg",
+	                      "p-id": "1640",
+	                      width: "24",
+	                      height: "24",
+	                    },
+	                  },
+	                  [
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "1641",
+	                      },
+	                    }),
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "1642",
+	                      },
+	                    }),
+	                  ]
+	                ),
+	              ]),
+	              _vm._v(" "),
+	              _c("div", { staticClass: "device-name" }, [
+	                _vm._v("上行网络质量"),
+	              ]),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { class: [_vm.goodUplinkQuality ? "green" : "red"] }, [
+	              _vm._v(
+	                "\n            " +
+	                  _vm._s(
+	                    _vm.NETWORK_QUALITY[
+	                      _vm.reportData.network.result.uplinkQuality
+	                    ]
+	                  ) +
+	                  "\n        "
+	              ),
+	            ]),
+	          ])
+	        : _vm._e(),
+	      _vm._v(" "),
+	      _vm.reportData.network
+	        ? _c("div", { staticClass: "device-report" }, [
+	            _c("div", { staticClass: "device-info" }, [
+	              _c("span", { staticClass: "report-icon" }, [
+	                _c(
+	                  "svg",
+	                  {
+	                    staticClass: "icon",
+	                    attrs: {
+	                      t: "1630400570252",
+	                      viewBox: "0 0 1291 1024",
+	                      version: "1.1",
+	                      xmlns: "http://www.w3.org/2000/svg",
+	                      "p-id": "1640",
+	                      width: "24",
+	                      height: "24",
+	                    },
+	                  },
+	                  [
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "1641",
+	                      },
+	                    }),
+	                    _c("path", {
+	                      attrs: {
+	                        d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                        fill: "#47494D",
+	                        opacity: ".8",
+	                        "p-id": "1642",
+	                      },
+	                    }),
+	                  ]
+	                ),
+	              ]),
+	              _vm._v(" "),
+	              _c("div", { staticClass: "device-name" }, [
+	                _vm._v("下行网络质量"),
+	              ]),
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { class: [_vm.goodDownlinkQuality ? "green" : "red"] }, [
+	              _vm._v(
+	                "\n          " +
+	                  _vm._s(
+	                    _vm.NETWORK_QUALITY[
+	                      _vm.reportData.network.result.downlinkQuality
+	                    ]
+	                  ) +
+	                  "\n        "
+	              ),
+	            ]),
+	          ])
+	        : _vm._e(),
+	    ]),
+	    _vm._v(" "),
+	    _c(
+	      "div",
+	      { staticClass: "device-report-footer" },
+	      [
+	        _c(
+	          "Button",
+	          { attrs: { type: "outlined", onClick: _vm.handleReset } },
+	          [_vm._v("重新检测")]
+	        ),
+	        _vm._v(" "),
+	        _c(
+	          "Button",
+	          { attrs: { type: "contained", onClick: _vm.handleClose } },
+	          [_vm._v("完成检测")]
+	        ),
+	      ],
+	      1
+	    ),
 	  ])
 	};
 	var __vue_staticRenderFns__$1 = [];
@@ -762,7 +2199,7 @@
 	  /* style */
 	  const __vue_inject_styles__$1 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$1 = "data-v-c37e0d88";
+	  const __vue_scope_id__$1 = "data-v-32dc4422";
 	  /* module identifier */
 	  const __vue_module_identifier__$1 = undefined;
 	  /* functional template */
@@ -792,8 +2229,13 @@
 	var script = {
 	  name: 'deviceDetector',
 	  components: {
-	    Button: __vue_component__$2,
-	    DeviceConnect: __vue_component__$1,
+	    Button: __vue_component__$8,
+	    DeviceConnect: __vue_component__$7,
+	    CameraDetector: __vue_component__$5,
+	    MicDetector: __vue_component__$4,
+	    SpeakerDetector: __vue_component__$3,
+	    NetworkDetector: __vue_component__$2,
+	    DetectorReport: __vue_component__$1,
 	  },
 	  props: {
 	    onClose: Function,
@@ -801,24 +2243,62 @@
 	      type: Boolean,
 	      default: true,
 	    },
+	    networkDetectInfo: Object,
+	    audioUrl: String,
 	  },
 	  data() {
 	    return {
 	      stepNameList: [],
-	      detectState: 0,
+	      detectStage: 0,
 	      activeStep: 0,
 	      isOpen: true,
 	      completed: {},
-	    }
+	    };
 	  },
 	  methods: {
+	    getLableClassName(index) {
+	      const { completed, stepNameList } = this;
+	      const success = completed[stepNameList[index]] && completed[stepNameList[index]].type === 'success';
+	      const error = completed[stepNameList[index]] && completed[stepNameList[index]].type === 'error';
+	      const active = this.activeStep === index;
+	      let stateClassName = '';
+	      if (active || success) {
+	        stateClassName = 'active';
+	      } else if (error) {
+	        stateClassName = 'error';
+	      }
+	      return stateClassName;
+	    },
+	    handleStep(step) {
+	      const { completed, stepNameList } = this;
+	      if (completed[stepNameList[step]] && completed[stepNameList[step]].completed) {
+	        this.activeStep = step;
+	      }
+	    },
+	    // 处理step的完成事件
+	    handleCompleted(type, result) {
+	      this.completed[this.stepNameList[this.activeStep]] = {
+	        completed: true,
+	        type,
+	        result,
+	      };
+	      if (this.activeStep < this.stepNameList.length - 1) {
+	        this.activeStep = this.activeStep + 1;
+	      }
+	      if (this.stepNameList.indexOf('network') < 0 && this.activeStep === this.stepNameList.length - 1) {
+	        this.detectStage = 2;
+	      }
+	    },
 	    stopBubble(event) {
 	      event.stopPropagation();
+	    },
+	    setDetectStage(value) {
+	      this.detectStage = value;
 	    },
 	    // 重新检测
 	    handleReset() {
 	      this.completed = {};
-	      this.detectState = 0;
+	      this.detectStage = 0;
 	      this.activeStep = 0;
 	    },
 	    // 结束检测
@@ -840,14 +2320,13 @@
 	      stepNameList.indexOf('network') >= 0 && stepNameList.splice(stepNameList.indexOf('network'), 1);
 	    }
 	    this.stepNameList = stepNameList;
-	  }
+	  },
 	};
 
 	/* script */
 	const __vue_script__ = script;
 	/* template */
-	var __vue_render__ = function() {
-	  var this$1$1 = this;
+	var __vue_render__ = function () {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -861,22 +2340,256 @@
 	              "Button",
 	              {
 	                staticClass: "close",
-	                attrs: { type: "outlined", onClick: _vm.handleClose }
+	                attrs: { type: "outlined", onClick: _vm.handleClose },
 	              },
 	              [_vm._v("跳过检测")]
 	            ),
 	            _vm._v(" "),
-	            _c("DeviceConnect", {
-	              attrs: {
-	                stepNameList: _vm.stepNameList,
-	                startDeviceDetect: function() {
-	                  return (this$1$1.detectState = 1)
-	                }
-	              }
-	            })
+	            _vm.detectStage === 0
+	              ? _c("DeviceConnect", {
+	                  attrs: {
+	                    stepNameList: _vm.stepNameList,
+	                    startDeviceDetect: function () {
+	                      return _vm.setDetectStage(1)
+	                    },
+	                  },
+	                })
+	              : _vm._e(),
+	            _vm._v(" "),
+	            _vm.detectStage === 1
+	              ? _c(
+	                  "div",
+	                  { staticClass: "step-container" },
+	                  _vm._l(_vm.stepNameList, function (label, index) {
+	                    return _c(
+	                      "div",
+	                      {
+	                        key: index,
+	                        class: ["step", _vm.getLableClassName(index)],
+	                        on: {
+	                          click: function ($event) {
+	                            return _vm.handleStep.bind(this, index)
+	                          },
+	                        },
+	                      },
+	                      [
+	                        _c("span", { staticClass: "step-icon" }, [
+	                          label === "camera"
+	                            ? _c(
+	                                "svg",
+	                                {
+	                                  staticClass: "icon",
+	                                  attrs: {
+	                                    t: "1630397874793",
+	                                    viewBox: "0 0 1024 1024",
+	                                    version: "1.1",
+	                                    xmlns: "http://www.w3.org/2000/svg",
+	                                    "p-id": "958",
+	                                    width: "24",
+	                                    height: "24",
+	                                  },
+	                                },
+	                                [
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
+	                                      opacity: ".8",
+	                                      "p-id": "959",
+	                                    },
+	                                  }),
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
+	                                      opacity: ".8",
+	                                      "p-id": "960",
+	                                    },
+	                                  }),
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
+	                                      opacity: ".8",
+	                                      "p-id": "961",
+	                                    },
+	                                  }),
+	                                ]
+	                              )
+	                            : _vm._e(),
+	                          _vm._v(" "),
+	                          label === "microphone"
+	                            ? _c(
+	                                "svg",
+	                                {
+	                                  staticClass: "icon",
+	                                  attrs: {
+	                                    t: "1630397938861",
+	                                    viewBox: "0 0 1024 1024",
+	                                    version: "1.1",
+	                                    xmlns: "http://www.w3.org/2000/svg",
+	                                    "p-id": "1205",
+	                                    width: "24",
+	                                    height: "24",
+	                                  },
+	                                },
+	                                [
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
+	                                      opacity: ".8",
+	                                      "p-id": "1206",
+	                                    },
+	                                  }),
+	                                ]
+	                              )
+	                            : _vm._e(),
+	                          _vm._v(" "),
+	                          label === "speaker"
+	                            ? _c(
+	                                "svg",
+	                                {
+	                                  staticClass: "icon",
+	                                  attrs: {
+	                                    t: "1629186923749",
+	                                    viewBox: "0 0 1024 1024",
+	                                    version: "1.1",
+	                                    xmlns: "http://www.w3.org/2000/svg",
+	                                    "p-id": "2923",
+	                                    width: "24",
+	                                    height: "24",
+	                                  },
+	                                },
+	                                [
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
+	                                      opacity: ".8",
+	                                      "p-id": "2924",
+	                                    },
+	                                  }),
+	                                ]
+	                              )
+	                            : _vm._e(),
+	                          _vm._v(" "),
+	                          label === "network"
+	                            ? _c(
+	                                "svg",
+	                                {
+	                                  staticClass: "icon",
+	                                  attrs: {
+	                                    t: "1630400570252",
+	                                    viewBox: "0 0 1291 1024",
+	                                    version: "1.1",
+	                                    xmlns: "http://www.w3.org/2000/svg",
+	                                    "p-id": "1640",
+	                                    width: "24",
+	                                    height: "24",
+	                                  },
+	                                },
+	                                [
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                                      opacity: ".8",
+	                                      "p-id": "1641",
+	                                    },
+	                                  }),
+	                                  _c("path", {
+	                                    attrs: {
+	                                      d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                                      opacity: ".8",
+	                                      "p-id": "1642",
+	                                    },
+	                                  }),
+	                                ]
+	                              )
+	                            : _vm._e(),
+	                        ]),
+	                        _vm._v(" "),
+	                        _c("span", { staticClass: "step-label" }, [
+	                          _vm._v(_vm._s(label.toUpperCase())),
+	                        ]),
+	                      ]
+	                    )
+	                  }),
+	                  0
+	                )
+	              : _vm._e(),
+	            _vm._v(" "),
+	            _vm.detectStage === 1
+	              ? _c(
+	                  "div",
+	                  { staticClass: "testing-container" },
+	                  _vm._l(_vm.stepNameList, function (step, index) {
+	                    return _c(
+	                      "div",
+	                      { key: index },
+	                      [
+	                        step === "camera"
+	                          ? _c("CameraDetector", {
+	                              key: index,
+	                              attrs: {
+	                                activeDetector:
+	                                  _vm.stepNameList[_vm.activeStep],
+	                                handleCompleted: _vm.handleCompleted,
+	                              },
+	                            })
+	                          : _vm._e(),
+	                        _vm._v(" "),
+	                        step === "microphone"
+	                          ? _c("MicDetector", {
+	                              key: index,
+	                              attrs: {
+	                                activeDetector:
+	                                  _vm.stepNameList[_vm.activeStep],
+	                                handleCompleted: _vm.handleCompleted,
+	                              },
+	                            })
+	                          : _vm._e(),
+	                        _vm._v(" "),
+	                        step === "speaker"
+	                          ? _c("SpeakerDetector", {
+	                              key: index,
+	                              attrs: {
+	                                activeDetector:
+	                                  _vm.stepNameList[_vm.activeStep],
+	                                handleCompleted: _vm.handleCompleted,
+	                              },
+	                            })
+	                          : _vm._e(),
+	                        _vm._v(" "),
+	                        step === "network"
+	                          ? _c("NetworkDetector", {
+	                              key: index,
+	                              attrs: {
+	                                activeDetector:
+	                                  _vm.stepNameList[_vm.activeStep],
+	                                networkDetectInfo: _vm.networkDetectInfo,
+	                                handleCompleted: _vm.handleCompleted,
+	                                generateReport: function () {
+	                                  return _vm.setDetectStage(2)
+	                                },
+	                              },
+	                            })
+	                          : _vm._e(),
+	                      ],
+	                      1
+	                    )
+	                  }),
+	                  0
+	                )
+	              : _vm._e(),
+	            _vm._v(" "),
+	            _vm.detectStage === 2
+	              ? _c("DetectorReport", {
+	                  attrs: {
+	                    reportData: _vm.completed,
+	                    handleReset: _vm.handleReset,
+	                    handleClose: _vm.handleClose,
+	                  },
+	                })
+	              : _vm._e(),
 	          ],
 	          1
-	        )
+	        ),
 	      ])
 	    : _vm._e()
 	};
@@ -886,7 +2599,7 @@
 	  /* style */
 	  const __vue_inject_styles__ = undefined;
 	  /* scoped */
-	  const __vue_scope_id__ = "data-v-53c2bf2d";
+	  const __vue_scope_id__ = "data-v-beb8115a";
 	  /* module identifier */
 	  const __vue_module_identifier__ = undefined;
 	  /* functional template */
@@ -924,9 +2637,9 @@
 	  install(window.Vue);
 	}
 
-	exports['default'] = install;
+	exports["default"] = install;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=index.js.map

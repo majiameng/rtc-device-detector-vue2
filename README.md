@@ -1,4 +1,5 @@
-rtc-device-detector-vue2 是腾讯云实时音视频 Web 端设备及网络检测公共组件, 使用 [React](https://react.docschina.org/) 框架，依托 [trtc-js-sdk](https://www.npmjs.com/package/trtc-js-sdk) 以及 [rtc-detect](https://www.npmjs.com/package/rtc-detect) 完成公共组件开发。rtc-device-detector-vue2 支持网络检测可选，支持中英文两种语言，同时提供 [github 源码](https://github.com/FTTC/rtc-device-detector) 以供参考和使用。
+rtc-device-detector-vue2 是腾讯云实时音视频 Web 端设备及网络检测公共组件, 
+使用 [VUE](https://cn.vuejs.org/) 框架，依托 [trtc-js-sdk](https://www.npmjs.com/package/trtc-js-sdk) 以及 [rtc-detect](https://www.npmjs.com/package/rtc-detect) 完成公共组件开发。rtc-device-detector-vue2 支持网络检测可选，支持中英文两种语言，同时提供 [github 源码](https://github.com/majiameng/rtc-device-detector-vue2) 以供参考和使用。
 
 ![img](https://sdk-web-1252463788.cos.ap-hongkong.myqcloud.com/trtc/webrtc/assets/rtc-device-detector.jpeg)
 
@@ -12,40 +13,72 @@ npm install rtc-device-detector-vue2
 
 ### 使用
 
-```javascript
-import React, { useState, useEffect } from 'react';
+```vue
+<template>
+  <deviceDetector
+    :hasNetworkDetect=true
+    :onClose="handleClose"
+    :networkDetectInfo="networkDetectInfo">
+  </deviceDetector>
+</template>
+
+<script>
+// rtc设备检测
 import DeviceDetector from 'rtc-device-detector-vue2';
 import 'rtc-device-detector-vue2/dist/index.css';
-import { getUserSig } from './utils';
+Vue.use(DeviceDetector)
 
-export default () => {
-  const [visible, setVisible] = useState(false);
-  const [networkDetectInfo, setNetworkDetectInfo] = useState({});
-
-  useEffect(() => {
-    const networkDetectInfo = {
-      sdkAppId: 'xxxxx',
-      roomId: 999999,
-      uplinkUserInfo: {
-        uplinkUserId: 'uplink_test',
-        uplinkUserSig: getUserSig('uplink_test'),
-      },
-      downlinkUserInfo: {
-        downlinkUserId: 'downlink_test',
-        downlinkUserSig: getUserSig('downlink_test'),
-      },
+export default {
+  name: 'MyDeviceDetector',
+  data() {
+    return {
+      roomId: 99999999,
+      userSig: {},
+      networkDetectInfo: {},
+      visible: false,
     }
-    setNetworkDetectInfo(networkDetectInfo);
-  }, []);
+  },
+  components: {},
+  created() {},
+  mounted() {
+    this.initData()
+  },
+  methods: {
+    initData() {
+      // 获取用户签名
+      this.userSig = res
+      let uplinkUserId = "";//上行用户id
+      let uplinkUserSig = "";//上行用户sig
+      let downlinkUserId = "";//下行用户id
+      let downlinkUserSig = "";//下行用户sig
 
-  return (
-    <DeviceDetector
-      visible={visible}
-      onClose={() => setVisible(false)}
-      hasNetworkDetect={true}
-      networkDetectInfo={networkDetectInfo}></DeviceDetector>
-  );
-};
+      const roomId = this.roomId;
+      const sdkappid = 'sdkappid';//SDK Appid
+      //检测视频参数
+      const networkDetectInfo = {
+        sdkAppId: sdkappid,
+        roomId,
+        uplinkUserInfo: {
+          uplinkUserId,
+          uplinkUserSig,
+        },
+        downlinkUserInfo: {
+          downlinkUserId,
+          downlinkUserSig,
+        },
+      };
+      this.networkDetectInfo = networkDetectInfo;
+      console.log("检测视频参数：")
+      console.log(this.networkDetectInfo )
+    },
+    handleClose() {
+      this.visible = false;
+    }
+  },
+}
+
+</script>
+
 ```
 
 ### 参数
@@ -81,7 +114,6 @@ rtc-device-detector-vue2 使用两个不同用户进入同一个 TRTC 房间的�
 + networkDetectInfo.sdkAppId
 
   rtc-device-detector-vue2 在网络检测阶段需要进房推拉流确认用户上下行网络质量，如使用网络检测，建议在 [实时音视频控制台/应用管理](https://console.cloud.tencent.com/trtc/app) 中为网络检测申请新的 sdkAppId，避免和线上业务发生用户被踢，其他用户进房等情况。
-
   
 
 + networkDetectInfo.roomId
@@ -94,7 +126,6 @@ rtc-device-detector-vue2 使用两个不同用户进入同一个 TRTC 房间的�
   > 数字（0-9）; 
   >
   > 空格、"!"、"#"、"$"、"%"、"&"、"("、")"、"+"、"-"、":"、";"、"<"、"="、"."、">"、"?"、"@"、"["、"]"、"^"、"_"、" {"、"}"、"|"、"~"、",";
-
 
 
 + networkDetectInfo.uplinkUserInfo.uplinkUserId / networkDetectInfo.downlinkUserInfo.downlinkUserId
