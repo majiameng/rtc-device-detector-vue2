@@ -108,8 +108,9 @@
           justify-content: center;
           font-size: 38px;
           svg {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
+            fill: #47494D;
           }
         }
         .outer-progress {
@@ -432,6 +433,7 @@
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+              text-align: left;
             }
           }
           .green {
