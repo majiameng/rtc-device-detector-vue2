@@ -5,6 +5,9 @@ rtc-device-detector-vue2 是腾讯云实时音视频 Web 端设备及网络检�
 
 ### 安装
 
+
+https://www.npmjs.com/package/rtc-device-detector-vue2
+
 ```bash
 yarn add rtc-device-detector-vue2
 or

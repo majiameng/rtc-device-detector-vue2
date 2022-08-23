@@ -1,7 +1,7 @@
 <template>
   <div v-if="isOpen" class="device-detector-backdrop">
     <div class="root" @click="stopBubble">
-      <Button type="outlined" class="close" :onClick="handleClose">跳过检测</Button>
+      <Button type="outlined" class="close" :onClick="handleClose" v-if="detectStage === 0">跳过检测</Button>
       <DeviceConnect
         v-if="detectStage === 0"
         :stepNameList="stepNameList"
