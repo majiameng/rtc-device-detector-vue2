@@ -39,6 +39,7 @@
             v-if="step === 'speaker'"
             :key="index"
             :activeDetector="stepNameList[activeStep]"
+            :audioUrl="audioUrl"
             :handleCompleted="handleCompleted"></SpeakerDetector>
           <NetworkDetector
             v-if="step === 'network'"
