@@ -1,8 +1,8 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('trtc-js-sdk')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'trtc-js-sdk'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["rtc-device-detector"] = {}, global.TRTC));
-})(this, (function (exports, TRTC) { 'use strict';
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['rtc-device-detector'] = {}, global.TRTC));
+}(this, (function (exports, TRTC) { 'use strict';
 
 	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -3344,9 +3344,7 @@
 	    // server build
 	    hook = function (context) {
 	      // 2.3 injection
-	      context = context || // cached call
-	      this.$vnode && this.$vnode.ssrContext || // stateful
-	      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
+	      context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
 	      // 2.2 with runInNewContext: true
 
 	      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
@@ -3397,7 +3395,7 @@
 	/* script */
 	const __vue_script__$8 = script$8;
 	/* template */
-	var __vue_render__$8 = function () {
+	var __vue_render__$8 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -3406,7 +3404,7 @@
 	    {
 	      class: ["button", _vm.type, _vm.className],
 	      attrs: { type: "button" },
-	      on: { click: _vm.onClick },
+	      on: { click: _vm.onClick }
 	    },
 	    [_vm._t("default")],
 	    2
@@ -3418,7 +3416,7 @@
 	  /* style */
 	  const __vue_inject_styles__$8 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$8 = "data-v-fe75f702";
+	  const __vue_scope_id__$8 = "data-v-55ead488";
 	  /* module identifier */
 	  const __vue_module_identifier__$8 = undefined;
 	  /* functional template */
@@ -3611,9 +3609,9 @@
 	      let micList = [];
 	      let speakerList = [];
 	      try {
-	        cameraList = await TRTC__default["default"].getCameras();
-	        micList = await TRTC__default["default"].getMicrophones();
-	        speakerList = await TRTC__default["default"].getSpeakers();
+	        cameraList = await TRTC__default['default'].getCameras();
+	        micList = await TRTC__default['default'].getMicrophones();
+	        speakerList = await TRTC__default['default'].getSpeakers();
 	      } catch (error) {
 	        console.log('rtc-device-detector getDeviceList error', error);
 	      }
@@ -3726,7 +3724,7 @@
 	/* script */
 	const __vue_script__$7 = script$7;
 	/* template */
-	var __vue_render__$7 = function () {
+	var __vue_render__$7 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -3734,14 +3732,14 @@
 	    _c("div", { staticClass: "testing-title" }, [_vm._v("设备连接")]),
 	    _vm._v(" "),
 	    _c("div", { staticClass: "testing-prepare-info" }, [
-	      _vm._v("\n    " + _vm._s(_vm.prepareInfo) + "\n  "),
+	      _vm._v("\n    " + _vm._s(_vm.prepareInfo) + "\n  ")
 	    ]),
 	    _vm._v(" "),
 	    _c(
 	      "div",
 	      { staticClass: "device-display" },
 	      [
-	        _vm._l(_vm.stepNameList, function (stepName, index) {
+	        _vm._l(_vm.stepNameList, function(stepName, index) {
 	          return _c("div", { key: index }, [
 	            stepName === "camera"
 	              ? _c(
@@ -3751,7 +3749,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasCameraConnect
 	                        ? "connect-success"
-	                        : "connect-fail"),
+	                        : "connect-fail")
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -3766,34 +3764,37 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "958",
 	                            width: "24",
-	                            height: "24",
-	                          },
+	                            height: "24"
+	                          }
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
+	                              d:
+	                                "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
 	                              opacity: ".8",
-	                              "p-id": "959",
-	                            },
+	                              "p-id": "959"
+	                            }
 	                          }),
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
+	                              d:
+	                                "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
 	                              opacity: ".8",
-	                              "p-id": "960",
-	                            },
+	                              "p-id": "960"
+	                            }
 	                          }),
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
+	                              d:
+	                                "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
 	                              opacity: ".8",
-	                              "p-id": "961",
-	                            },
-	                          }),
+	                              "p-id": "961"
+	                            }
+	                          })
 	                        ]
-	                      ),
-	                    ]),
+	                      )
+	                    ])
 	                  ]
 	                )
 	              : _vm._e(),
@@ -3806,7 +3807,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasMicrophoneConnect
 	                        ? "connect-success"
-	                        : "connect-fail"),
+	                        : "connect-fail")
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -3821,20 +3822,21 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "1205",
 	                            width: "24",
-	                            height: "24",
-	                          },
+	                            height: "24"
+	                          }
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
+	                              d:
+	                                "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
 	                              opacity: ".8",
-	                              "p-id": "1206",
-	                            },
-	                          }),
+	                              "p-id": "1206"
+	                            }
+	                          })
 	                        ]
-	                      ),
-	                    ]),
+	                      )
+	                    ])
 	                  ]
 	                )
 	              : _vm._e(),
@@ -3847,7 +3849,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasSpeakerConnect
 	                        ? "connect-success"
-	                        : "connect-fail"),
+	                        : "connect-fail")
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -3862,20 +3864,21 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "2923",
 	                            width: "24",
-	                            height: "24",
-	                          },
+	                            height: "24"
+	                          }
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
+	                              d:
+	                                "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
 	                              opacity: ".8",
-	                              "p-id": "2924",
-	                            },
-	                          }),
+	                              "p-id": "2924"
+	                            }
+	                          })
 	                        ]
-	                      ),
-	                    ]),
+	                      )
+	                    ])
 	                  ]
 	                )
 	              : _vm._e(),
@@ -3888,7 +3891,7 @@
 	                      _vm.showConnectResult &&
 	                      (_vm.deviceState.hasNetworkConnect
 	                        ? "connect-success"
-	                        : "connect-fail"),
+	                        : "connect-fail")
 	                  },
 	                  [
 	                    _c("span", { staticClass: "device" }, [
@@ -3903,30 +3906,32 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "1640",
 	                            width: "24",
-	                            height: "24",
-	                          },
+	                            height: "24"
+	                          }
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                              d:
+	                                "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
 	                              opacity: ".8",
-	                              "p-id": "1641",
-	                            },
+	                              "p-id": "1641"
+	                            }
 	                          }),
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                              d:
+	                                "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
 	                              opacity: ".8",
-	                              "p-id": "1642",
-	                            },
-	                          }),
+	                              "p-id": "1642"
+	                            }
+	                          })
 	                        ]
-	                      ),
-	                    ]),
+	                      )
+	                    ])
 	                  ]
 	                )
-	              : _vm._e(),
+	              : _vm._e()
 	          ])
 	        }),
 	        _vm._v(" "),
@@ -3935,18 +3940,18 @@
 	              _c("div", {
 	                staticClass: "inner-progress",
 	                style: {
-	                  transform: "translateX(" + (_vm.progress - 100) + "%)",
-	                },
-	              }),
+	                  transform: "translateX(" + (_vm.progress - 100) + "%)"
+	                }
+	              })
 	            ])
-	          : _vm._e(),
+	          : _vm._e()
 	      ],
 	      2
 	    ),
 	    _vm._v(" "),
 	    !_vm.showConnectResult
 	      ? _c("div", { staticClass: "text gray-text" }, [
-	          _vm._v("设备正在连接中，请稍后"),
+	          _vm._v("设备正在连接中，请稍后")
 	        ])
 	      : _vm._e(),
 	    _vm._v(" "),
@@ -3956,8 +3961,8 @@
 	          {
 	            class: [
 	              "text",
-	              "" + (_vm.connectResult.success ? "green-text" : "red-text"),
-	            ],
+	              "" + (_vm.connectResult.success ? "green-text" : "red-text")
+	            ]
 	          },
 	          [
 	            _c("span", [_vm._v(_vm._s(_vm.connectResult.info))]),
@@ -3968,19 +3973,19 @@
 	                  {
 	                    staticClass: "error-connect",
 	                    on: {
-	                      touchstart: function () {
+	                      touchstart: function() {
 	                        return _vm.setShowRemind(true)
 	                      },
-	                      mouseenter: function () {
+	                      mouseenter: function() {
 	                        return _vm.setShowRemind(true)
 	                      },
-	                      touchend: function () {
+	                      touchend: function() {
 	                        return _vm.setShowRemind(false)
 	                      },
-	                      mouseleave: function () {
+	                      mouseleave: function() {
 	                        return _vm.setShowRemind(false)
-	                      },
-	                    },
+	                      }
+	                    }
 	                  },
 	                  [
 	                    _c("span", { staticClass: "error-icon" }, [
@@ -3995,32 +4000,33 @@
 	                            xmlns: "http://www.w3.org/2000/svg",
 	                            "p-id": "3223",
 	                            width: "28",
-	                            height: "28",
-	                          },
+	                            height: "28"
+	                          }
 	                        },
 	                        [
 	                          _c("path", {
 	                            attrs: {
-	                              d: "M1024 518.314667C1024 794.794667 794.737778 1024 505.685333 1024 229.205333 1024 0 794.737778 0 518.314667 0 229.262222 229.262222 0 505.685333 0 794.737778 0 1024 229.262222 1024 518.314667zM512 256a48.128 48.128 0 0 0-48.753778 51.370667L477.866667 614.4h68.266666l14.620445-307.029333A48.355556 48.355556 0 0 0 512 256z m0 512a51.2 51.2 0 1 0 0-102.4 51.2 51.2 0 0 0 0 102.4z",
+	                              d:
+	                                "M1024 518.314667C1024 794.794667 794.737778 1024 505.685333 1024 229.205333 1024 0 794.737778 0 518.314667 0 229.262222 229.262222 0 505.685333 0 794.737778 0 1024 229.262222 1024 518.314667zM512 256a48.128 48.128 0 0 0-48.753778 51.370667L477.866667 614.4h68.266666l14.620445-307.029333A48.355556 48.355556 0 0 0 512 256z m0 512a51.2 51.2 0 1 0 0-102.4 51.2 51.2 0 0 0 0 102.4z",
 	                              fill: "#FF0000",
-	                              "p-id": "3224",
-	                            },
-	                          }),
+	                              "p-id": "3224"
+	                            }
+	                          })
 	                        ]
-	                      ),
+	                      )
 	                    ]),
 	                    _vm._v(" "),
 	                    _vm.showRemind
 	                      ? _c("div", {
 	                          staticClass: "connect-attention-info",
 	                          domProps: {
-	                            innerHTML: _vm._s(_vm.connectResult.remind),
-	                          },
+	                            innerHTML: _vm._s(_vm.connectResult.remind)
+	                          }
 	                        })
-	                      : _vm._e(),
+	                      : _vm._e()
 	                  ]
 	                )
-	              : _vm._e(),
+	              : _vm._e()
 	          ]
 	        )
 	      : _vm._e(),
@@ -4047,10 +4053,10 @@
 	              { attrs: { type: "contained", onClick: _vm.startDeviceDetect } },
 	              [_vm._v("开始检测")]
 	            )
-	          : _vm._e(),
+	          : _vm._e()
 	      ],
 	      1
-	    ),
+	    )
 	  ])
 	};
 	var __vue_staticRenderFns__$7 = [];
@@ -4059,7 +4065,7 @@
 	  /* style */
 	  const __vue_inject_styles__$7 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$7 = "data-v-2b82fa24";
+	  const __vue_scope_id__$7 = "data-v-7fccf612";
 	  /* module identifier */
 	  const __vue_module_identifier__$7 = undefined;
 	  /* functional template */
@@ -4090,13 +4096,13 @@
 	  let deviceList = [];
 	  switch (deviceType) {
 	    case 'camera':
-	      deviceList = await TRTC__default["default"].getCameras();
+	      deviceList = await TRTC__default['default'].getCameras();
 	      break;
 	    case 'microphone':
-	      deviceList = await TRTC__default["default"].getMicrophones();
+	      deviceList = await TRTC__default['default'].getMicrophones();
 	      break;
 	    case 'speaker':
-	      deviceList = await TRTC__default["default"].getSpeakers();
+	      deviceList = await TRTC__default['default'].getSpeakers();
 	      break;
 	  }
 	  return deviceList;
@@ -4157,7 +4163,7 @@
 	/* script */
 	const __vue_script__$6 = script$6;
 	/* template */
-	var __vue_render__$6 = function () {
+	var __vue_render__$6 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -4167,9 +4173,9 @@
 	      {
 	        staticClass: "device-select",
 	        domProps: { value: _vm.activeDeviceId },
-	        on: { change: _vm.handleChange },
+	        on: { change: _vm.handleChange }
 	      },
-	      _vm._l(_vm.deviceList, function (item, index) {
+	      _vm._l(_vm.deviceList, function(item, index) {
 	        return _c(
 	          "option",
 	          { key: index, domProps: { value: item.deviceId } },
@@ -4177,7 +4183,7 @@
 	        )
 	      }),
 	      0
-	    ),
+	    )
 	  ])
 	};
 	var __vue_staticRenderFns__$6 = [];
@@ -4186,7 +4192,7 @@
 	  /* style */
 	  const __vue_inject_styles__$6 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$6 = "data-v-48111b94";
+	  const __vue_scope_id__$6 = "data-v-d87feb2a";
 	  /* module identifier */
 	  const __vue_module_identifier__$6 = undefined;
 	  /* functional template */
@@ -4245,7 +4251,7 @@
 	  },
 	  methods: {
 	    async initStream(cameraID) {
-	      this.localStream = TRTC__default["default"].createStream({
+	      this.localStream = TRTC__default['default'].createStream({
 	        video: true,
 	        audio: false,
 	        cameraId: cameraID,
@@ -4281,7 +4287,7 @@
 	/* script */
 	const __vue_script__$5 = script$5;
 	/* template */
-	var __vue_render__$5 = function () {
+	var __vue_render__$5 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -4292,28 +4298,28 @@
 	          { staticClass: "device-list" },
 	          [
 	            _c("span", { staticClass: "device-list-title" }, [
-	              _vm._v("摄像头选择"),
+	              _vm._v("摄像头选择")
 	            ]),
 	            _vm._v(" "),
 	            _c("DeviceSelect", {
 	              attrs: {
 	                deviceType: "camera",
 	                choseDevice: _vm.choseDevice,
-	                onChange: _vm.handleCameraChange,
-	              },
-	            }),
+	                onChange: _vm.handleCameraChange
+	              }
+	            })
 	          ],
 	          1
 	        ),
 	        _vm._v(" "),
 	        _c("div", {
 	          staticClass: "camera-video",
-	          attrs: { id: "camera-video" },
+	          attrs: { id: "camera-video" }
 	        }),
 	        _vm._v(" "),
 	        _c("div", { staticClass: "testing-info-container" }, [
 	          _c("div", { staticClass: "testing-info" }, [
-	            _vm._v("是否可以清楚的看到自己？"),
+	            _vm._v("是否可以清楚的看到自己？")
 	          ]),
 	          _vm._v(" "),
 	          _c(
@@ -4330,11 +4336,11 @@
 	                "Button",
 	                { attrs: { type: "contained", onClick: _vm.handleSuccess } },
 	                [_vm._v("看的到")]
-	              ),
+	              )
 	            ],
 	            1
-	          ),
-	        ]),
+	          )
+	        ])
 	      ])
 	    : _vm._e()
 	};
@@ -4344,7 +4350,7 @@
 	  /* style */
 	  const __vue_inject_styles__$5 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$5 = "data-v-6e11e9ef";
+	  const __vue_scope_id__$5 = "data-v-dcb0d210";
 	  /* module identifier */
 	  const __vue_module_identifier__$5 = undefined;
 	  /* functional template */
@@ -4408,7 +4414,7 @@
 	  methods: {
 	    async initStream(microphoneID) {
 	      console.log('microphoneID', microphoneID);
-	      this.localStream = TRTC__default["default"].createStream({
+	      this.localStream = TRTC__default['default'].createStream({
 	        video: false,
 	        audio: true,
 	        microphoneId: microphoneID,
@@ -4438,7 +4444,7 @@
 	/* script */
 	const __vue_script__$4 = script$4;
 	/* template */
-	var __vue_render__$4 = function () {
+	var __vue_render__$4 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -4449,43 +4455,43 @@
 	          { staticClass: "device-list" },
 	          [
 	            _c("span", { staticClass: "device-list-title" }, [
-	              _vm._v("麦克风选择"),
+	              _vm._v("麦克风选择")
 	            ]),
 	            _vm._v(" "),
 	            _c("DeviceSelect", {
 	              attrs: {
 	                deviceType: "microphone",
 	                choseDevice: _vm.choseDevice,
-	                onChange: _vm.handleMicrophoneChange,
-	              },
-	            }),
+	                onChange: _vm.handleMicrophoneChange
+	              }
+	            })
 	          ],
 	          1
 	        ),
 	        _vm._v(" "),
 	        _c("div", { staticClass: "mic-testing-container" }, [
 	          _c("div", { staticClass: "mic-testing-info" }, [
-	            _vm._v('对着麦克风说"哈喽"试试～'),
+	            _vm._v('对着麦克风说"哈喽"试试～')
 	          ]),
 	          _vm._v(" "),
 	          _c(
 	            "div",
 	            { staticClass: "mic-bar-container" },
-	            _vm._l(new Array(28).fill(""), function (item, index) {
+	            _vm._l(new Array(28).fill(""), function(item, index) {
 	              return _c("div", {
 	                key: index,
-	                class: ["mic-bar " + (_vm.volumeNum > index && "active")],
+	                class: ["mic-bar " + (_vm.volumeNum > index && "active")]
 	              })
 	            }),
 	            0
 	          ),
 	          _vm._v(" "),
-	          _c("div", { attrs: { id: "audio-container" } }),
+	          _c("div", { attrs: { id: "audio-container" } })
 	        ]),
 	        _vm._v(" "),
 	        _c("div", { staticClass: "testing-info-container" }, [
 	          _c("div", { staticClass: "testing-info" }, [
-	            _vm._v("是否可以看到音量图标跳动？"),
+	            _vm._v("是否可以看到音量图标跳动？")
 	          ]),
 	          _vm._v(" "),
 	          _c(
@@ -4497,10 +4503,10 @@
 	                {
 	                  attrs: {
 	                    type: "outlined",
-	                    onClick: function () {
+	                    onClick: function() {
 	                      return _vm.handleCompleted("error", _vm.microphoneLabel)
-	                    },
-	                  },
+	                    }
+	                  }
 	                },
 	                [_vm._v("看不到")]
 	              ),
@@ -4510,17 +4516,17 @@
 	                {
 	                  attrs: {
 	                    type: "contained",
-	                    onClick: function () {
+	                    onClick: function() {
 	                      return _vm.handleCompleted("success", _vm.microphoneLabel)
-	                    },
-	                  },
+	                    }
+	                  }
 	                },
 	                [_vm._v("看的到")]
-	              ),
+	              )
 	            ],
 	            1
-	          ),
-	        ]),
+	          )
+	        ])
 	      ])
 	    : _vm._e()
 	};
@@ -4530,7 +4536,7 @@
 	  /* style */
 	  const __vue_inject_styles__$4 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$4 = "data-v-55f9d558";
+	  const __vue_scope_id__$4 = "data-v-bb59a52a";
 	  /* module identifier */
 	  const __vue_module_identifier__$4 = undefined;
 	  /* functional template */
@@ -4608,7 +4614,7 @@
 	/* script */
 	const __vue_script__$3 = script$3;
 	/* template */
-	var __vue_render__$3 = function () {
+	var __vue_render__$3 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -4619,33 +4625,33 @@
 	          { staticClass: "device-list" },
 	          [
 	            _c("span", { staticClass: "device-list-title" }, [
-	              _vm._v("扬声器选择"),
+	              _vm._v("扬声器选择")
 	            ]),
 	            _vm._v(" "),
 	            _c("DeviceSelect", {
 	              attrs: {
 	                deviceType: "speaker",
 	                choseDevice: _vm.choseDevice,
-	                onChange: _vm.handleSpeakerChange,
-	              },
-	            }),
+	                onChange: _vm.handleSpeakerChange
+	              }
+	            })
 	          ],
 	          1
 	        ),
 	        _vm._v(" "),
 	        _c("div", { staticClass: "audio-player-container" }, [
 	          _c("div", { staticClass: "audio-player-info" }, [
-	            _vm._v("请调高设备音量，点击播放下面的音频试试～"),
+	            _vm._v("请调高设备音量，点击播放下面的音频试试～")
 	          ]),
 	          _vm._v(" "),
 	          _c("audio", {
-	            attrs: { id: "audio-player", src: _vm.audioUrl, controls: "" },
-	          }),
+	            attrs: { id: "audio-player", src: _vm.audioUrl, controls: "" }
+	          })
 	        ]),
 	        _vm._v(" "),
 	        _c("div", { staticClass: "testing-info-container" }, [
 	          _c("div", { staticClass: "testing-info" }, [
-	            _vm._v("是否可以听到声音？"),
+	            _vm._v("是否可以听到声音？")
 	          ]),
 	          _vm._v(" "),
 	          _c(
@@ -4657,10 +4663,10 @@
 	                {
 	                  attrs: {
 	                    type: "outlined",
-	                    onClick: function () {
+	                    onClick: function() {
 	                      return _vm.handleCompleted("error", _vm.speakerLabel)
-	                    },
-	                  },
+	                    }
+	                  }
 	                },
 	                [_vm._v("听不到")]
 	              ),
@@ -4670,17 +4676,17 @@
 	                {
 	                  attrs: {
 	                    type: "contained",
-	                    onClick: function () {
+	                    onClick: function() {
 	                      return _vm.handleCompleted("success", _vm.speakerLabel)
-	                    },
-	                  },
+	                    }
+	                  }
 	                },
 	                [_vm._v("听的到")]
-	              ),
+	              )
 	            ],
 	            1
-	          ),
-	        ]),
+	          )
+	        ])
 	      ])
 	    : _vm._e()
 	};
@@ -4690,7 +4696,7 @@
 	  /* style */
 	  const __vue_inject_styles__$3 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$3 = "data-v-2b1e6fcc";
+	  const __vue_scope_id__$3 = "data-v-37e665ba";
 	  /* module identifier */
 	  const __vue_module_identifier__$3 = undefined;
 	  /* functional template */
@@ -4774,7 +4780,7 @@
 	    async testUplinkNetworkQuality() {
 	      const { sdkAppId, roomId } = this.networkDetectInfo;
 	      const { uplinkUserId, uplinkUserSig } = this.networkDetectInfo.uplinkUserInfo;
-	      this.uplinkClient = TRTC__default["default"].createClient({
+	      this.uplinkClient = TRTC__default['default'].createClient({
 	        sdkAppId,
 	        userId: uplinkUserId,
 	        userSig: uplinkUserSig,
@@ -4782,7 +4788,7 @@
 	        useStringRoomId: typeof(roomId) === 'string',
 	      });
 
-	      this.uplinkStream = TRTC__default["default"].createStream({ audio: true, video: true });
+	      this.uplinkStream = TRTC__default['default'].createStream({ audio: true, video: true });
 	      await this.uplinkStream.initialize();
 
 	      this.uplinkClient.on('network-quality', async (event) => {
@@ -4801,7 +4807,7 @@
 	    async testDownlinkNetworkQuality() {
 	      const { sdkAppId, roomId } = this.networkDetectInfo;
 	      const { downlinkUserId, downlinkUserSig } = this.networkDetectInfo.downlinkUserInfo;
-	      this.downlinkClient = TRTC__default["default"].createClient({
+	      this.downlinkClient = TRTC__default['default'].createClient({
 	        sdkAppId,
 	        userId: downlinkUserId,
 	        userSig: downlinkUserSig,
@@ -4866,7 +4872,7 @@
 	/* script */
 	const __vue_script__$2 = script$2;
 	/* template */
-	var __vue_render__$2 = function () {
+	var __vue_render__$2 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -4885,9 +4891,9 @@
 	                [
 	                  _vm._v(
 	                    "\n        " + _vm._s(_vm.detectorInfo.system) + "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
+	              )
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { staticClass: "testing-item-container" }, [
@@ -4899,9 +4905,9 @@
 	                [
 	                  _vm._v(
 	                    "\n        " + _vm._s(_vm.detectorInfo.browser) + "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
+	              )
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { staticClass: "testing-item-container" }, [
@@ -4910,16 +4916,16 @@
 	              _c(
 	                "div",
 	                {
-	                  class: !_vm.detectorInfo.TRTCSupport ? "network-loading" : "",
+	                  class: !_vm.detectorInfo.TRTCSupport ? "network-loading" : ""
 	                },
 	                [
 	                  _vm._v(
 	                    "\n        " +
 	                      _vm._s(_vm.detectorInfo.TRTCSupport) +
 	                      "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
+	              )
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { staticClass: "testing-item-container" }, [
@@ -4930,16 +4936,16 @@
 	                {
 	                  class: !_vm.detectorInfo.screenMediaSupport
 	                    ? "network-loading"
-	                    : "",
+	                    : ""
 	                },
 	                [
 	                  _vm._v(
 	                    "\n        " +
 	                      _vm._s(_vm.detectorInfo.screenMediaSupport) +
 	                      "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
+	              )
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { staticClass: "testing-item-container" }, [
@@ -4955,9 +4961,9 @@
 	                        _vm.detectorInfo.rtt ? _vm.detectorInfo.rtt + "ms" : ""
 	                      ) +
 	                      "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
+	              )
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { staticClass: "testing-item-container" }, [
@@ -4968,7 +4974,7 @@
 	                {
 	                  class: !_vm.NETWORK_QUALITY[_vm.detectorInfo.uplinkQuality]
 	                    ? "network-loading"
-	                    : "",
+	                    : ""
 	                },
 	                [
 	                  _vm._v(
@@ -4978,9 +4984,9 @@
 	                          ""
 	                      ) +
 	                      "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
+	              )
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { staticClass: "testing-item-container" }, [
@@ -4991,7 +4997,7 @@
 	                {
 	                  class: !_vm.NETWORK_QUALITY[_vm.detectorInfo.downlinkQuality]
 	                    ? "network-loading"
-	                    : "",
+	                    : ""
 	                },
 	                [
 	                  _vm._v(
@@ -5001,10 +5007,10 @@
 	                          ""
 	                      ) +
 	                      "\n      "
-	                  ),
+	                  )
 	                ]
-	              ),
-	            ]),
+	              )
+	            ])
 	          ]),
 	          _vm._v(" "),
 	          _vm.count > 0
@@ -5017,10 +5023,10 @@
 	                "Button",
 	                {
 	                  staticClass: "report-button",
-	                  attrs: { type: "contained", onClick: _vm.generateReport },
+	                  attrs: { type: "contained", onClick: _vm.generateReport }
 	                },
 	                [_vm._v("查看检测报告")]
-	              ),
+	              )
 	        ],
 	        1
 	      )
@@ -5032,7 +5038,7 @@
 	  /* style */
 	  const __vue_inject_styles__$2 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$2 = "data-v-087e29c6";
+	  const __vue_scope_id__$2 = "data-v-3c4a269d";
 	  /* module identifier */
 	  const __vue_module_identifier__$2 = undefined;
 	  /* functional template */
@@ -5090,7 +5096,7 @@
 	/* script */
 	const __vue_script__$1 = script$1;
 	/* template */
-	var __vue_render__$1 = function () {
+	var __vue_render__$1 = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -5112,47 +5118,50 @@
 	                  xmlns: "http://www.w3.org/2000/svg",
 	                  "p-id": "958",
 	                  width: "24",
-	                  height: "24",
-	                },
+	                  height: "24"
+	                }
 	              },
 	              [
 	                _c("path", {
 	                  attrs: {
-	                    d: "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
+	                    d:
+	                      "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
 	                    fill: "#47494D",
 	                    opacity: ".8",
-	                    "p-id": "959",
-	                  },
+	                    "p-id": "959"
+	                  }
 	                }),
 	                _c("path", {
 	                  attrs: {
-	                    d: "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
+	                    d:
+	                      "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
 	                    fill: "#47494D",
 	                    opacity: ".8",
-	                    "p-id": "960",
-	                  },
+	                    "p-id": "960"
+	                  }
 	                }),
 	                _c("path", {
 	                  attrs: {
-	                    d: "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
+	                    d:
+	                      "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
 	                    fill: "#47494D",
 	                    opacity: ".8",
-	                    "p-id": "961",
-	                  },
-	                }),
+	                    "p-id": "961"
+	                  }
+	                })
 	              ]
-	            ),
+	            )
 	          ]),
 	          _vm._v(" "),
 	          _c("div", { staticClass: "device-name" }, [
-	            _vm._v(_vm._s(_vm.reportData.camera.result)),
-	          ]),
+	            _vm._v(_vm._s(_vm.reportData.camera.result))
+	          ])
 	        ]),
 	        _vm._v(" "),
 	        _c(
 	          "div",
 	          {
-	            class: [_vm.reportData.camera.type === "success" ? "green" : "red"],
+	            class: [_vm.reportData.camera.type === "success" ? "green" : "red"]
 	          },
 	          [
 	            _vm._v(
@@ -5161,9 +5170,9 @@
 	                  _vm.reportData.camera.type === "success" ? "正常" : "异常"
 	                ) +
 	                "\n        "
-	            ),
+	            )
 	          ]
-	        ),
+	        )
 	      ]),
 	      _vm._v(" "),
 	      _c("div", { staticClass: "device-report" }, [
@@ -5180,33 +5189,34 @@
 	                  xmlns: "http://www.w3.org/2000/svg",
 	                  "p-id": "1205",
 	                  width: "24",
-	                  height: "24",
-	                },
+	                  height: "24"
+	                }
 	              },
 	              [
 	                _c("path", {
 	                  attrs: {
-	                    d: "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
+	                    d:
+	                      "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
 	                    fill: "#47494D",
 	                    opacity: ".8",
-	                    "p-id": "1206",
-	                  },
-	                }),
+	                    "p-id": "1206"
+	                  }
+	                })
 	              ]
-	            ),
+	            )
 	          ]),
 	          _vm._v(" "),
 	          _c("div", { staticClass: "device-name" }, [
-	            _vm._v(_vm._s(_vm.reportData.microphone.result)),
-	          ]),
+	            _vm._v(_vm._s(_vm.reportData.microphone.result))
+	          ])
 	        ]),
 	        _vm._v(" "),
 	        _c(
 	          "div",
 	          {
 	            class: [
-	              _vm.reportData.microphone.type === "success" ? "green" : "red",
-	            ],
+	              _vm.reportData.microphone.type === "success" ? "green" : "red"
+	            ]
 	          },
 	          [
 	            _vm._v(
@@ -5215,9 +5225,9 @@
 	                  _vm.reportData.microphone.type === "success" ? "正常" : "异常"
 	                ) +
 	                "\n        "
-	            ),
+	            )
 	          ]
-	        ),
+	        )
 	      ]),
 	      _vm._v(" "),
 	      _vm.reportData.speaker
@@ -5235,33 +5245,34 @@
 	                      xmlns: "http://www.w3.org/2000/svg",
 	                      "p-id": "2923",
 	                      width: "24",
-	                      height: "24",
-	                    },
+	                      height: "24"
+	                    }
 	                  },
 	                  [
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
+	                        d:
+	                          "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "2924",
-	                      },
-	                    }),
+	                        "p-id": "2924"
+	                      }
+	                    })
 	                  ]
-	                ),
+	                )
 	              ]),
 	              _vm._v(" "),
 	              _c("div", { staticClass: "device-name" }, [
-	                _vm._v(_vm._s(_vm.reportData.speaker.result)),
-	              ]),
+	                _vm._v(_vm._s(_vm.reportData.speaker.result))
+	              ])
 	            ]),
 	            _vm._v(" "),
 	            _c(
 	              "div",
 	              {
 	                class: [
-	                  _vm.reportData.speaker.type === "success" ? "green" : "red",
-	                ],
+	                  _vm.reportData.speaker.type === "success" ? "green" : "red"
+	                ]
 	              },
 	              [
 	                _vm._v(
@@ -5272,9 +5283,9 @@
 	                        : "异常"
 	                    ) +
 	                    "\n        "
-	                ),
+	                )
 	              ]
-	            ),
+	            )
 	          ])
 	        : _vm._e(),
 	      _vm._v(" "),
@@ -5293,48 +5304,50 @@
 	                      xmlns: "http://www.w3.org/2000/svg",
 	                      "p-id": "1640",
 	                      width: "24",
-	                      height: "24",
-	                    },
+	                      height: "24"
+	                    }
 	                  },
 	                  [
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                        d:
+	                          "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "1641",
-	                      },
+	                        "p-id": "1641"
+	                      }
 	                    }),
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                        d:
+	                          "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "1642",
-	                      },
-	                    }),
+	                        "p-id": "1642"
+	                      }
+	                    })
 	                  ]
-	                ),
+	                )
 	              ]),
 	              _vm._v(" "),
-	              _c("div", { staticClass: "device-name" }, [_vm._v("网络延时")]),
+	              _c("div", { staticClass: "device-name" }, [_vm._v("网络延时")])
 	            ]),
 	            _vm._v(" "),
 	            _c(
 	              "div",
 	              {
 	                class: [
-	                  _vm.reportData.network.result.rtt <= 200 ? "green" : "red",
-	                ],
+	                  _vm.reportData.network.result.rtt <= 200 ? "green" : "red"
+	                ]
 	              },
 	              [
 	                _vm._v(
 	                  "\n          " +
 	                    _vm._s(_vm.reportData.network.result.rtt + "ms") +
 	                    "\n        "
-	                ),
+	                )
 	              ]
-	            ),
+	            )
 	          ])
 	        : _vm._e(),
 	      _vm._v(" "),
@@ -5353,33 +5366,35 @@
 	                      xmlns: "http://www.w3.org/2000/svg",
 	                      "p-id": "1640",
 	                      width: "24",
-	                      height: "24",
-	                    },
+	                      height: "24"
+	                    }
 	                  },
 	                  [
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                        d:
+	                          "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "1641",
-	                      },
+	                        "p-id": "1641"
+	                      }
 	                    }),
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                        d:
+	                          "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "1642",
-	                      },
-	                    }),
+	                        "p-id": "1642"
+	                      }
+	                    })
 	                  ]
-	                ),
+	                )
 	              ]),
 	              _vm._v(" "),
 	              _c("div", { staticClass: "device-name" }, [
-	                _vm._v("上行网络质量"),
-	              ]),
+	                _vm._v("上行网络质量")
+	              ])
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { class: [_vm.goodUplinkQuality ? "green" : "red"] }, [
@@ -5391,8 +5406,8 @@
 	                    ]
 	                  ) +
 	                  "\n        "
-	              ),
-	            ]),
+	              )
+	            ])
 	          ])
 	        : _vm._e(),
 	      _vm._v(" "),
@@ -5411,33 +5426,35 @@
 	                      xmlns: "http://www.w3.org/2000/svg",
 	                      "p-id": "1640",
 	                      width: "24",
-	                      height: "24",
-	                    },
+	                      height: "24"
+	                    }
 	                  },
 	                  [
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                        d:
+	                          "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "1641",
-	                      },
+	                        "p-id": "1641"
+	                      }
 	                    }),
 	                    _c("path", {
 	                      attrs: {
-	                        d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                        d:
+	                          "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
 	                        fill: "#47494D",
 	                        opacity: ".8",
-	                        "p-id": "1642",
-	                      },
-	                    }),
+	                        "p-id": "1642"
+	                      }
+	                    })
 	                  ]
-	                ),
+	                )
 	              ]),
 	              _vm._v(" "),
 	              _c("div", { staticClass: "device-name" }, [
-	                _vm._v("下行网络质量"),
-	              ]),
+	                _vm._v("下行网络质量")
+	              ])
 	            ]),
 	            _vm._v(" "),
 	            _c("div", { class: [_vm.goodDownlinkQuality ? "green" : "red"] }, [
@@ -5449,10 +5466,10 @@
 	                    ]
 	                  ) +
 	                  "\n        "
-	              ),
-	            ]),
+	              )
+	            ])
 	          ])
-	        : _vm._e(),
+	        : _vm._e()
 	    ]),
 	    _vm._v(" "),
 	    _c(
@@ -5469,10 +5486,10 @@
 	          "Button",
 	          { attrs: { type: "contained", onClick: _vm.handleClose } },
 	          [_vm._v("完成检测")]
-	        ),
+	        )
 	      ],
 	      1
-	    ),
+	    )
 	  ])
 	};
 	var __vue_staticRenderFns__$1 = [];
@@ -5481,7 +5498,7 @@
 	  /* style */
 	  const __vue_inject_styles__$1 = undefined;
 	  /* scoped */
-	  const __vue_scope_id__$1 = "data-v-444da66a";
+	  const __vue_scope_id__$1 = "data-v-d0ab28fe";
 	  /* module identifier */
 	  const __vue_module_identifier__$1 = undefined;
 	  /* functional template */
@@ -5608,7 +5625,7 @@
 	/* script */
 	const __vue_script__ = script;
 	/* template */
-	var __vue_render__ = function () {
+	var __vue_render__ = function() {
 	  var _vm = this;
 	  var _h = _vm.$createElement;
 	  var _c = _vm._self._c || _h;
@@ -5623,7 +5640,7 @@
 	                  "Button",
 	                  {
 	                    staticClass: "close",
-	                    attrs: { type: "outlined", onClick: _vm.handleClose },
+	                    attrs: { type: "outlined", onClick: _vm.handleClose }
 	                  },
 	                  [_vm._v("跳过检测")]
 	                )
@@ -5633,10 +5650,10 @@
 	              ? _c("DeviceConnect", {
 	                  attrs: {
 	                    stepNameList: _vm.stepNameList,
-	                    startDeviceDetect: function () {
+	                    startDeviceDetect: function() {
 	                      return _vm.setDetectStage(1)
-	                    },
-	                  },
+	                    }
+	                  }
 	                })
 	              : _vm._e(),
 	            _vm._v(" "),
@@ -5644,17 +5661,17 @@
 	              ? _c(
 	                  "div",
 	                  { staticClass: "step-container" },
-	                  _vm._l(_vm.stepNameList, function (label, index) {
+	                  _vm._l(_vm.stepNameList, function(label, index) {
 	                    return _c(
 	                      "div",
 	                      {
 	                        key: index,
 	                        class: ["step", _vm.getLableClassName(index)],
 	                        on: {
-	                          click: function ($event) {
+	                          click: function($event) {
 	                            return _vm.handleStep.bind(this, index)
-	                          },
-	                        },
+	                          }
+	                        }
 	                      },
 	                      [
 	                        _c("span", { staticClass: "step-icon" }, [
@@ -5670,31 +5687,34 @@
 	                                    xmlns: "http://www.w3.org/2000/svg",
 	                                    "p-id": "958",
 	                                    width: "24",
-	                                    height: "24",
-	                                  },
+	                                    height: "24"
+	                                  }
 	                                },
 	                                [
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
+	                                      d:
+	                                        "M489.244444 0a460.8 460.8 0 1 1 0 921.6A460.8 460.8 0 0 1 489.244444 0z m0 204.8a256 256 0 1 0 0 512 256 256 0 0 0 0-512z",
 	                                      opacity: ".8",
-	                                      "p-id": "959",
-	                                    },
+	                                      "p-id": "959"
+	                                    }
 	                                  }),
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
+	                                      d:
+	                                        "M489.244444 460.8m-153.6 0a153.6 153.6 0 1 0 307.2 0 153.6 153.6 0 1 0-307.2 0Z",
 	                                      opacity: ".8",
-	                                      "p-id": "960",
-	                                    },
+	                                      "p-id": "960"
+	                                    }
 	                                  }),
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
+	                                      d:
+	                                        "M120.604444 952.32a368.64 61.44 0 1 0 737.28 0 368.64 61.44 0 1 0-737.28 0Z",
 	                                      opacity: ".8",
-	                                      "p-id": "961",
-	                                    },
-	                                  }),
+	                                      "p-id": "961"
+	                                    }
+	                                  })
 	                                ]
 	                              )
 	                            : _vm._e(),
@@ -5711,17 +5731,18 @@
 	                                    xmlns: "http://www.w3.org/2000/svg",
 	                                    "p-id": "1205",
 	                                    width: "24",
-	                                    height: "24",
-	                                  },
+	                                    height: "24"
+	                                  }
 	                                },
 	                                [
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
+	                                      d:
+	                                        "M841.551448 434.423172A41.666207 41.666207 0 0 1 882.758621 476.548414c0 194.701241-144.454621 355.469241-329.551449 376.514207v86.722207h164.758069a41.666207 41.666207 0 0 1 41.207173 42.089931A41.666207 41.666207 0 0 1 717.965241 1024H306.034759A41.666207 41.666207 0 0 1 264.827586 981.874759a41.666207 41.666207 0 0 1 41.207173-42.089931h164.758069v-86.722207C285.696 832.052966 141.241379 671.249655 141.241379 476.548414a41.666207 41.666207 0 0 1 41.207173-42.125242 41.666207 41.666207 0 0 1 41.171862 42.125242c0 162.78069 129.129931 294.770759 288.379586 294.770758l8.827586-0.141241c155.153655-4.766897 279.552-134.850207 279.552-294.629517a41.666207 41.666207 0 0 1 41.171862-42.125242zM512 0c119.419586 0 216.275862 88.770207 216.275862 198.232276v317.228138c0 106.990345-92.513103 194.206897-208.154483 198.091034l-8.121379 0.141242c-119.419586 0-216.275862-88.770207-216.275862-198.232276V198.232276c0-106.990345 92.513103-194.206897 208.154483-198.091035L512 0z",
 	                                      opacity: ".8",
-	                                      "p-id": "1206",
-	                                    },
-	                                  }),
+	                                      "p-id": "1206"
+	                                    }
+	                                  })
 	                                ]
 	                              )
 	                            : _vm._e(),
@@ -5738,17 +5759,18 @@
 	                                    xmlns: "http://www.w3.org/2000/svg",
 	                                    "p-id": "2923",
 	                                    width: "24",
-	                                    height: "24",
-	                                  },
+	                                    height: "24"
+	                                  }
 	                                },
 	                                [
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
+	                                      d:
+	                                        "M640 181.333333c0-46.037333-54.357333-70.4-88.746667-39.850666L359.552 311.850667a32 32 0 0 1-21.248 8.106666H181.333333A96 96 0 0 0 85.333333 415.957333v191.872a96 96 0 0 0 96 96h157.013334a32 32 0 0 1 21.248 8.106667l191.616 170.410667c34.389333 30.549333 88.789333 6.144 88.789333-39.850667V181.333333z m170.325333 70.272a32 32 0 0 1 44.757334 6.698667A424.917333 424.917333 0 0 1 938.666667 512a424.96 424.96 0 0 1-83.626667 253.696 32 32 0 0 1-51.413333-38.058667A360.917333 360.917333 0 0 0 874.666667 512a360.917333 360.917333 0 0 0-71.04-215.637333 32 32 0 0 1 6.698666-44.757334zM731.434667 357.12a32 32 0 0 1 43.392 12.928c22.869333 42.24 35.84 90.666667 35.84 141.994667a297.514667 297.514667 0 0 1-35.84 141.994666 32 32 0 0 1-56.32-30.464c17.92-33.152 28.16-71.082667 28.16-111.530666s-10.24-78.378667-28.16-111.530667a32 32 0 0 1 12.928-43.392z",
 	                                      opacity: ".8",
-	                                      "p-id": "2924",
-	                                    },
-	                                  }),
+	                                      "p-id": "2924"
+	                                    }
+	                                  })
 	                                ]
 	                              )
 	                            : _vm._e(),
@@ -5765,32 +5787,34 @@
 	                                    xmlns: "http://www.w3.org/2000/svg",
 	                                    "p-id": "1640",
 	                                    width: "24",
-	                                    height: "24",
-	                                  },
+	                                    height: "24"
+	                                  }
 	                                },
 	                                [
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
+	                                      d:
+	                                        "M992.211478 583.68A449.758609 449.758609 0 0 0 650.017391 426.295652c-136.904348 0-259.561739 61.039304-342.194087 157.384348a90.156522 90.156522 0 0 0 136.859826 117.359304 269.846261 269.846261 0 0 1 205.334261-94.430608c82.142609 0 155.737043 36.641391 205.334261 94.386087a90.156522 90.156522 0 1 0 136.859826-117.359305zM559.86087 922.134261a90.156522 90.156522 0 1 0 180.313043 0 90.156522 90.156522 0 0 0-180.313043 0z",
 	                                      opacity: ".8",
-	                                      "p-id": "1641",
-	                                    },
+	                                      "p-id": "1641"
+	                                    }
 	                                  }),
 	                                  _c("path", {
 	                                    attrs: {
-	                                      d: "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
+	                                      d:
+	                                        "M1253.064348 289.124174A809.316174 809.316174 0 0 0 650.017391 20.613565a809.316174 809.316174 0 0 0-603.046956 268.466087 90.156522 90.156522 0 1 0 127.777391 127.065044l0.311652 0.26713A629.581913 629.581913 0 0 1 650.017391 200.926609c189.395478 0 359.290435 83.389217 474.957913 215.485217l0.267131-0.26713a90.156522 90.156522 0 1 0 127.777391-127.065044z",
 	                                      opacity: ".8",
-	                                      "p-id": "1642",
-	                                    },
-	                                  }),
+	                                      "p-id": "1642"
+	                                    }
+	                                  })
 	                                ]
 	                              )
-	                            : _vm._e(),
+	                            : _vm._e()
 	                        ]),
 	                        _vm._v(" "),
 	                        _c("span", { staticClass: "step-label" }, [
-	                          _vm._v(_vm._s(label.toUpperCase())),
-	                        ]),
+	                          _vm._v(_vm._s(label.toUpperCase()))
+	                        ])
 	                      ]
 	                    )
 	                  }),
@@ -5802,7 +5826,7 @@
 	              ? _c(
 	                  "div",
 	                  { staticClass: "testing-container" },
-	                  _vm._l(_vm.stepNameList, function (step, index) {
+	                  _vm._l(_vm.stepNameList, function(step, index) {
 	                    return _c(
 	                      "div",
 	                      { key: index },
@@ -5813,8 +5837,8 @@
 	                              attrs: {
 	                                activeDetector:
 	                                  _vm.stepNameList[_vm.activeStep],
-	                                handleCompleted: _vm.handleCompleted,
-	                              },
+	                                handleCompleted: _vm.handleCompleted
+	                              }
 	                            })
 	                          : _vm._e(),
 	                        _vm._v(" "),
@@ -5824,8 +5848,8 @@
 	                              attrs: {
 	                                activeDetector:
 	                                  _vm.stepNameList[_vm.activeStep],
-	                                handleCompleted: _vm.handleCompleted,
-	                              },
+	                                handleCompleted: _vm.handleCompleted
+	                              }
 	                            })
 	                          : _vm._e(),
 	                        _vm._v(" "),
@@ -5836,7 +5860,8 @@
 	                                activeDetector:
 	                                  _vm.stepNameList[_vm.activeStep],
 	                                handleCompleted: _vm.handleCompleted,
-	                              },
+	                                audioUrl: _vm.audioUrl
+	                              }
 	                            })
 	                          : _vm._e(),
 	                        _vm._v(" "),
@@ -5848,12 +5873,12 @@
 	                                  _vm.stepNameList[_vm.activeStep],
 	                                networkDetectInfo: _vm.networkDetectInfo,
 	                                handleCompleted: _vm.handleCompleted,
-	                                generateReport: function () {
+	                                generateReport: function() {
 	                                  return _vm.setDetectStage(2)
-	                                },
-	                              },
+	                                }
+	                              }
 	                            })
-	                          : _vm._e(),
+	                          : _vm._e()
 	                      ],
 	                      1
 	                    )
@@ -5867,13 +5892,13 @@
 	                  attrs: {
 	                    reportData: _vm.completed,
 	                    handleReset: _vm.handleReset,
-	                    handleClose: _vm.handleClose,
-	                  },
+	                    handleClose: _vm.handleClose
+	                  }
 	                })
-	              : _vm._e(),
+	              : _vm._e()
 	          ],
 	          1
-	        ),
+	        )
 	      ])
 	    : _vm._e()
 	};
@@ -5883,7 +5908,7 @@
 	  /* style */
 	  const __vue_inject_styles__ = undefined;
 	  /* scoped */
-	  const __vue_scope_id__ = "data-v-adff672c";
+	  const __vue_scope_id__ = "data-v-6271c050";
 	  /* module identifier */
 	  const __vue_module_identifier__ = undefined;
 	  /* functional template */
@@ -5921,9 +5946,9 @@
 	  install(window.Vue);
 	}
 
-	exports["default"] = install;
+	exports['default'] = install;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=index.js.map
