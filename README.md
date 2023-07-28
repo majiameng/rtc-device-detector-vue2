@@ -1,5 +1,7 @@
 rtc-device-detector-vue2 是腾讯云实时音视频 Web 端设备及网络检测公共组件, 
-使用 [VUE](https://cn.vuejs.org/) 框架，依托 [trtc-js-sdk](https://www.npmjs.com/package/trtc-js-sdk) 以及 [rtc-detect](https://www.npmjs.com/package/rtc-detect) 完成公共组件开发。rtc-device-detector-vue2 支持网络检测可选，支持中英文两种语言，同时提供 [github 源码](https://github.com/majiameng/rtc-device-detector-vue2) 以供参考和使用。
+使用 [VUE](https://cn.vuejs.org/) 框架，依托 [trtc-js-sdk](https://www.npmjs.com/package/trtc-js-sdk) 以及 [rtc-detect](https://www.npmjs.com/package/rtc-detect) 完成公共组件开发。
+
+rtc-device-detector-vue2 支持网络检测可选，支持中英文两种语言，同时提供 [github 源码](https://github.com/majiameng/rtc-device-detector-vue2) 以供参考和使用,希望大家能点个赞。
 
 ![img](https://sdk-web-1252463788.cos.ap-hongkong.myqcloud.com/trtc/webrtc/assets/rtc-device-detector.jpeg)
 
